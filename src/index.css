@@ -27,13 +27,14 @@ code {
 }
 
 .link-animate {
+  color: #5a5a5a;
   transition: background .2s;
 }
 
-/* .link-animate:hover {
+.link-animate:hover {
   background: blue;
   color: #fff;
-} */
+}
 
 
 .link-animate:visited {
