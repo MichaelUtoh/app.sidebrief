@@ -1,12 +1,22 @@
-import './App.css';
-import HeaderComponent from './components/Navigation/Header';
-import MainComponent from './components/Navigation/TopNav';
+import { BrowserRouter, Routes, Route, useRoutes } from 'react-router-dom';
+import LoginComponent from './components/Authentication/login';
+import RegisterComponent from './components/Authentication/register';
+import DashboardNavComponent from './components/Dashboard';
+
 
 function App() {
+  document.title = "Home • Sidebrief"
+  
+
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <HeaderComponent title="Home" />
-      <MainComponent />
+    <div className="min-h-screen">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" index element={<LoginComponent />} />
+          <Route path="/register" index element={<RegisterComponent />} />
+          <Route path="/dashboard" index element={<DashboardNavComponent />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
