@@ -1,5 +1,6 @@
 import React from 'react'
 import { BiKey, BiUser } from 'react-icons/bi'
+import { MdAlternateEmail } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
 const RegisterComponent = () => {
@@ -13,15 +14,24 @@ const RegisterComponent = () => {
                 <img alt="" className="absolute top-5 right-5" src={require("../../assets/sidebrief.png")} width="96px" />
                 <div className="bg-white flex flex-col items-center justify-center h-96 p-4 rounded-sm shadow-sm">
                     {/* <h1 className="font-two mb-14 text-xl">Login</h1> */}
+                    <div className="border-2 border-gray-600 flex items-center justify-between mt-4 px-2">
+                        <BiUser color="#5a5a5a" />
+                        <input className="font-two outline-none p-2" id="fullname" placeholder="Full Name" type="text" />
+                    </div>
 
                     <div className="border-2 border-gray-600 flex items-center justify-between mt-4 px-2">
                         <BiUser color="#5a5a5a" />
-                        <input className="outline-none p-2" id="username" placeholder="Username" type="text" />
+                        <input className="font-two outline-none p-2" id="username" placeholder="Username" type="text" />
+                    </div>
+
+                    <div className="border-2 border-gray-600 flex items-center justify-between mt-4 px-2">
+                        <MdAlternateEmail color="#5a5a5a" />
+                        <input className="font-two outline-none p-2" id="email" placeholder="Email" type="text" />
                     </div>
 
                     <div className="border-2 border-gray-600 flex items-center justify-between mt-4 px-2">
                         <BiKey color="#5a5a5a" />
-                        <input className="outline-none p-2" id="password" placeholder="Password" type="password" />
+                        <input className="font-two outline-none p-2" id="password" placeholder="Password" type="password" />
                     </div>
 
                     <div className="flex items-center justify-between mt-4 w-full">

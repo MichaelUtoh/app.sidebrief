@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PageNotFound from './404-page';
+import FormationComponent from './components/Actions/formation';
 import LoginComponent from './components/Authentication/login';
 import RegisterComponent from './components/Authentication/register';
 import DashboardNavComponent from './components/Dashboard';
@@ -14,7 +16,9 @@ function App() {
         <Routes>
           <Route path="/login" index element={<LoginComponent />} />
           <Route path="/register" index element={<RegisterComponent />} />
-          <Route path="/" index element={<DashboardNavComponent />} />
+          <Route path="/dashboard" index element={<DashboardNavComponent />} />
+          <Route path="/dashboard/formation" index element={<FormationComponent />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
