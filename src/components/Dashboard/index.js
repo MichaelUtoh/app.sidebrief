@@ -1,7 +1,5 @@
 import React from 'react'
 import { BiCog, BiHomeAlt, BiPowerOff, BiRegistered, BiUser} from 'react-icons/bi'
-import { BiSearchAlt } from 'react-icons/bi'
-import { FiBell } from 'react-icons/fi'
 import HeroComponent from '../Hero'
 import NavbarComponent from '../Navigation/navbar'
 

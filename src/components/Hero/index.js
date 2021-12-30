@@ -11,10 +11,10 @@ const HeroComponent = () => {
 
             {/* Card Section */}
             <div className="flex flex-wrap mt-10 justify-between">
-                <CardComponent />
-                <CardComponent />
-                <CardComponent />
-                <CardComponent />
+                <CardComponent title="Formation" description="Register any type of profit or non-profit entity." />
+                <CardComponent title="IP" description="Register trademarks, copyrights and patents." />
+                <CardComponent title="Compliance" description="Get local licenses and permits to do business." />
+                <CardComponent title="Maintenance" description="Manage your company records and filings." />
             </div>
         </div>
     )
