@@ -2,8 +2,9 @@ import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { BiKey, BiUser } from 'react-icons/bi'
-import { MdAlternateEmail } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+// import { MdAlternateEmail } from 'react-icons/md'
+
 
 const LoginComponent = () => {
 
@@ -22,15 +23,13 @@ const LoginComponent = () => {
         }),
         onSubmit: (values) => {
             console.log(values);
-        }
+    }
     })
-
-    console.log(formik.touched);
 
     return (
         <div className="bg-white flex items-center justify-between min-h-screen w-full">
             <div className="abstract flex items-center justify-center h-screen w-7/12">
-                <div className="bg-gray-900 h-screen w-full opacity-75"></div>
+                <div className="bg-gray-900 h-screen w-full opacity-50"></div>
             </div>
 
             <div className="flex items-center justify-center h-screen w-5/12 relative">
@@ -51,7 +50,7 @@ const LoginComponent = () => {
                                 value={formik.values.username}
                             />
                         </div>
-                        {formik.errors.username ? <p className="text-red-500 text-sm text-right w-full">{formik.errors.username}</p> : null}
+                        {formik.touched.username && formik.errors.username ? <p className="text-red-500 text-sm text-right w-full">{formik.errors.username}</p> : null}
 
                         <div className="border-2 border-gray-600 flex items-center justify-between mt-4 px-2">
                             <BiKey color="#5a5a5a" />
@@ -66,7 +65,7 @@ const LoginComponent = () => {
                                 value={formik.values.password}
                             />
                         </div>
-                        {formik.errors.password ? <p className="text-red-500 text-sm text-right w-full">{formik.errors.password}</p> : null}
+                        {formik.touched.password && formik.errors.password ? <p className="text-red-500 text-sm text-right w-full">{formik.errors.password}</p> : null}
 
                         <div className="flex items-center justify-between mt-4 w-full">
                             <div className="flex">
