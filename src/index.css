@@ -27,6 +27,7 @@ body {
 }
 
 .card {
+  border: .5px solid #f8f8f8;
   width: 250px;
 }
  
@@ -59,5 +60,16 @@ body {
   }
   .main {
     width: 100%
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .abstract {
+    display: none;
+  }
+  .auth-box {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
   }
 }

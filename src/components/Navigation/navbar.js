@@ -5,9 +5,9 @@ import { FiBell } from 'react-icons/fi'
 const NavbarComponent = () => {
     return (
         <div className="flex justify-between w-full px-6 p-4">
-            <div className="bg-custom border-2 border-gray-300 flex items-center rounded-md min-w-4/12">
+            <div className="border-2 border-gray-300 flex grow items-center rounded-md min-w-4/12">
                 <BiSearchAlt className="mx-2" color="#5a5a5a" size={20} />
-                <input className="bg-custom outline-none p-2 rounded-r-md" name="" placeholder="" />
+                <input className="outline-none p-2 rounded-r-md" name="" placeholder="" />
             </div>
 
             <div className="flex items-center justify-end w-4/12">

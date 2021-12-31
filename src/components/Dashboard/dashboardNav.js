@@ -9,7 +9,7 @@ const DashboardNavbarComponent = () => {
     }
 
     return (
-        <div className="items-center bg-white flex flex-col h-screen justify-start pt-48">
+        <div className="items-center bg-gray-50 flex flex-col min-h-screen justify-start pt-48">
 
             {/* <Router> */}
             <ul className="w-full">
