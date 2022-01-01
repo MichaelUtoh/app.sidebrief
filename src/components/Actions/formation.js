@@ -19,14 +19,10 @@ const FormationComponent = () => {
 const FormationInfoComponent = () => {
 
     const [countryList, setCountryList] = useState([])
-    // const [countryData, setCountryData] = useState([])
-    // console.log(countryList);
 
     useEffect(() => {
         axios.get("https://restcountries.com/v3.1/all")
-            .then(res => {
-                setCountryList(res.data);
-            })
+            .then(res => { setCountryList(res.data) })
             .catch((err) => console.log(err.response))
     }, [])
 
@@ -40,15 +36,15 @@ const FormationInfoComponent = () => {
 
                 <div className="flex flex-col justify-start mr-4 w-3/12">
                     <ul>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Country</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Names</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Business</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Address</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Share Capital</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Shareholders</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Directors</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Beneficial Owners</a> </li>
-                        <li className="bg-gray-50 hover:text-cyan-500 my-1 p-2 text-[#5a5a5a]"> <a href="#id">Review & Submit</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Country</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Names</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Business</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Address</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Share Capital</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Shareholders</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Directors</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Beneficial Owners</a> </li>
+                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#id">Review & Submit</a> </li>
 
                     </ul>
                     
@@ -62,8 +58,8 @@ const FormationInfoComponent = () => {
                         <div className="flex items-center pt-2">
                             <select className="bg-[#f8f8f8] mr-1 outline-none p-2 rounded-sm w-6/12">
                                 
-                                {countryList.map((name, index) => {
-                                    return <option key={index}>{name}</option>;
+                                {countryList.map((country) => {
+                                    return <option className="text-[#5a5a5a]" key={country.ccn3}>{country.name.common}</option>;
                                 })}
 
                             </select>
