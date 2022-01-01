@@ -11,7 +11,7 @@ const CardComponent = ({ url, image, title, description }) => {
 
                 <div className="p-4">
                     <p className="font-one mt-2 text-md"> {title} </p>
-                    <p className="font-two mt-2 text-sm"> {description} </p>
+                    <p className="font-two mt-2 text-sm text-[#5a5a5a]"> {description} </p>
                 </div>
             </div>
         </Link>

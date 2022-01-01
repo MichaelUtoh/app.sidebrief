@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { BiKey, BiUser } from 'react-icons/bi'
 import { MdAlternateEmail } from 'react-icons/md'
 
 const ForgotPasswordComponent = () => {
