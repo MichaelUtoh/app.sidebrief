@@ -72,7 +72,7 @@ const LoginComponent = () => {
 
                         <div className="flex items-center justify-between mt-4 w-full">
                             <div className="flex">
-                                <p className="cursor-pointer font-thin mr-6 text-[#5a5a5a] text-xs hover:underline">
+                                <p className="cursor-pointer font-thin mr-2 text-cyan-600 text-xs hover:underline">
                                     <Link to="/register">Register</Link>
                                 </p>
                                 <p className="cursor-pointer font-thin text-[#5a5a5a] text-xs hover:underline">

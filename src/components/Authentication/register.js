@@ -106,8 +106,8 @@ const RegisterComponent = () => {
 
                         <div className="flex items-center justify-between mt-4 w-full">
                             <div className="flex">
-                                <p className="font-thin mr-6 text-[#5a5a5a] text-xs">Already a member</p>
-                                <p className="cursor-pointer font-thin text-xs hover:underline text-[#5a5a5a]"><Link to="/login">Login</Link></p>
+                                <p className="font-thin mr-2 text-[#5a5a5a] text-xs">Already a member</p>
+                                <p className="cursor-pointer font-thin text-xs hover:underline text-cyan-600"><Link to="/login">Login</Link></p>
                             </div>
                             <button className="bg-cyan-500 p-2 px-4 text-white" type="submit">Register</button>
                         </div>
