@@ -72,4 +72,13 @@ body {
     justify-content: center;
     width: 100% !important;
   }
+  .form {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .form {
+    width: 80%;
+  }
 }

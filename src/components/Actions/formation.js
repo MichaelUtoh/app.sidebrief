@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
-import DashboardNavbarComponent from '../Dashboard/dashboardNav'
+import DashboardNavbarComponent from '../Dashboard/sidebar'
 import NavbarComponent from '../Navigation/navbar'
 import axios from 'axios'
 
@@ -80,11 +80,11 @@ const FormationInfoComponent = () => {
                 <div className="flex flex-col justify-start min-h-full w-9/12">
 
                     <div className="p-2 w-full">
-                        <p className="flex font-one flex-col text-xl" id="country">Country</p>
-                        <p className="font-two text-sm text-[#5a5a5a] mt-2 w-6/12">Where would you like to register your new entity?</p>
+                        <p className="flex font-one flex-col font-medium text-xl" id="country">Country</p>
+                        <p className="font-two text-sm text-[#757575] mt-2 w-6/12">Where would you like to register your new entity?</p>
                         <div className="flex items-center pt-2">
                             <select
-                                className="bg-gray-100 mr-1 outline-none p-2 w-6/12"
+                                className="bg-gray-100 h-10 mr-1 outline-none p-2 w-6/12"
                                 id="country"
                                 name="country"
                                 onBlur={formik.handleBlur}
@@ -324,6 +324,15 @@ const FormationInfoComponent = () => {
                             </div>
                         </div>
                     </div>
+
+                    <div className="mt-6 p-2 w-7/12">
+                        <p className="text-[#5a5a5a] text-xs">By submitting this information and using Sidebrief, 
+                            you agree to meet the <a className="text-cyan-600" href="#">KYC requirements </a> 
+                            and agree to our <a className="text-cyan-600" href="#">Terms and Conditions of Service</a>.
+                        </p>
+                    </div>
+
+                    <button className="bg-cyan-600 mt-4 p-2 text-white w-6/12">Review and Submit</button>
 
                 </div>
 

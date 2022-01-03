@@ -8,10 +8,12 @@ const DashboardNavbarComponent = () => {
     console.log(url);
 
     return (
-        <div className="items-center bg-gray-50 flex flex-col justify-start min-h-screen pt-48">
+        <div className="items-center bg-gray-50 flex flex-col justify-start min-h-screen py-4">
+
+            <img alt="" className="mt-2" src={require("../../assets/sidebrief.png")} width="96px" />
 
             {/* <Router> */}
-            <ul className="w-full">
+            <ul className="mt-48 w-full">
                 <Link to="/dashboard">
                     <div
                         className={ 

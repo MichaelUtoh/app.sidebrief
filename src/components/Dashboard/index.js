@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroComponent from '../Hero'
 import NavbarComponent from '../Navigation/navbar'
-import DashboardNavbarComponent from './dashboardNav'
+import DashboardNavbarComponent from './sidebar'
 
 
 const DashboardNavComponent = () => {    
