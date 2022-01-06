@@ -2,15 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { BiCog, BiHomeAlt, BiPowerOff, BiRegistered, BiUser} from 'react-icons/bi'
 
-const DashboardNavbarComponent = () => {
+const SidebarComponent = () => {
 
     const url = window.location.pathname
     console.log(url);
 
     return (
-        <div className="items-center bg-gray-50 flex flex-col justify-start min-h-screen py-4">
+        <div className="bg-gray-50 flex flex-col items-center justify-start py-4 static">
 
-            <img alt="" className="mt-2" src={require("../../assets/sidebrief.png")} width="96px" />
+            <img alt="" className="mt-2 responsive" src={require("../../assets/sidebrief.png")} width="96px" />
 
             {/* <Router> */}
             <ul className="mt-48 w-full">
@@ -66,4 +66,4 @@ const DashboardNavbarComponent = () => {
     )
 }
 
-export default DashboardNavbarComponent;
+export default SidebarComponent;

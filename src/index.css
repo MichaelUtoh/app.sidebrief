@@ -7,10 +7,12 @@
 
 body {
   background: #f8f8f8;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   font-family: 'Rubik', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth !important;
 }
 
 .abstract {
@@ -55,16 +57,28 @@ body {
   .card {
     width: 350px;
   }
+  .input-width {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    width: 100px;
+  }
   .link-display {
     display: none !important;
   }
   .main {
     width: 100%
   }
+  .responsive {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1000px) {
   .abstract {
+    display: none;
+  }
+  .abstract-sidebar {
     display: none;
   }
   .auth-box {

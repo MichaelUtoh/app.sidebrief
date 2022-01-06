@@ -10,7 +10,7 @@ const CardComponent = ({ url, image, title, description }) => {
                 <img alt="" className="absolute right-0 top-0" src={image} height="120px" width="120px" />
 
                 <div className="p-4">
-                    <p className="font-one mt-2 text-md"> {title} </p>
+                    <p className="font-one font-bold mt-2 text-md"> {title} </p>
                     <p className="font-two mt-2 text-sm text-[#5a5a5a]"> {description} </p>
                 </div>
             </div>

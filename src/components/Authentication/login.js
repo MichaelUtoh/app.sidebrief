@@ -3,10 +3,10 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { BiKey, BiUser } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
-// import { MdAlternateEmail } from 'react-icons/md'
+import { PropTypes } from 'prop-types'
 
 
-const LoginComponent = () => {
+const LoginComponent = ({setToken}) => {
 
     const formik = useFormik({
         initialValues: {
@@ -86,6 +86,10 @@ const LoginComponent = () => {
             </div>
         </div>
     )
+}
+
+LoginComponent.propTypes = {
+  setToken: PropTypes.func.isRequired
 }
 
 export default LoginComponent
