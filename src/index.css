@@ -57,12 +57,6 @@ body {
   .card {
     width: 350px;
   }
-  .input-width {
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    width: 100px;
-  }
   .link-display {
     display: none !important;
   }

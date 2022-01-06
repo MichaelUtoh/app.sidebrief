@@ -138,20 +138,20 @@ const FormationInfoComponent = () => {
                     <div className="mt-6 p-2 lg:w-10/12" id="capital">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Share Capital</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">What number of shares will your company have as share capital?</p>
-                        <div className="flex items-center pt-2">
-                            <div className="flex">
-                                <input
-                                    className="bg-gray-100 input-width mr-1 outline-none p-2 w-64"
-                                    id="shareCapitalAmount"
-                                    name="shareCapitalAmount"
-                                    onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
-                                    placeholder="e.g. 1,000,000"
-                                    type="text"
-                                    value={formik.values.shareCapitalAmount}
-                                />
+                        <div className="pt-2">
+                            <input
+                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                id="shareCapitalAmount"
+                                name="shareCapitalAmount"
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                placeholder="e.g. 1,000,000"
+                                type="text"
+                                value={formik.values.shareCapitalAmount}
+                            />
+                            <div className="flex items-center my-1">
                                 <select
-                                    className="bg-gray-100 outline-none p-2 text-[#141414] text-sm w-[290px]"
+                                    className="bg-gray-100 h-10 outline-none p-2 text-[#141414] text-sm w-full"
                                     id="shareCapitalType"
                                     name="shareCapitalType"
                                     onBlur={formik.handleBlur}
@@ -162,8 +162,8 @@ const FormationInfoComponent = () => {
                                     <option>Ordinary Shares</option>
                                     <option>Preference Shares</option>
                                 </select>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
                             </div>
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
                         </div>
                     </div>
 
@@ -201,31 +201,29 @@ const FormationInfoComponent = () => {
                                 type="text"
                                 value={formik.values.shareholderPhoneNo}
                             />
-                            <div className="flex items-center pt-2 w-full">
-                                <div className="flex">
-                                    <input
-                                        className="bg-gray-100 mr-1 outline-none p-2 w-64"
-                                        id="shareholderSharePercentage"
-                                        name="shareholderSharePercentage"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                        placeholder="Percentage of Shares"
-                                        type="text"
-                                        value={formik.values.shareholderSharePercentage}
-                                    />
-                                    <select
-                                        className="bg-gray-100 outline-none p-2 text-[#141414] text-sm w-[290px]"
-                                        id="shareholderShareCapitalType"
-                                        name="shareholderShareCapitalType"
-                                        onBlur={formik.handleBlur}
-                                        onChange={formik.handleChange}
-                                        type="text"
-                                        value={formik.values.shareholderShareCapitalType}
-                                    >
-                                        <option>Ordinary Shares</option>
-                                        <option>Preference Shares</option>
-                                    </select>
-                                </div>
+                            <input
+                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                id="shareholderSharePercentage"
+                                name="shareholderSharePercentage"
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                placeholder="Percentage of Shares"
+                                type="text"
+                                value={formik.values.shareholderSharePercentage}
+                            />
+                            <div className="flex items-center w-full">
+                                <select
+                                    className="bg-gray-100 grow h-10 outline-none p-2 text-[#141414] text-sm"
+                                    id="shareholderShareCapitalType"
+                                    name="shareholderShareCapitalType"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    type="text"
+                                    value={formik.values.shareholderShareCapitalType}
+                                >
+                                    <option>Ordinary Shares</option>
+                                    <option>Preference Shares</option>
+                                </select>
                                 <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
                             </div>
                         </div>                        
