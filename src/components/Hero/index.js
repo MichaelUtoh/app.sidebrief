@@ -16,7 +16,7 @@ const HeroComponent = () => {
             {/* Card Section */}
             <div className="flex flex-wrap mt-10 justify-start">
                 <CardComponent url="/dashboard/formation" image={SVG1} title="Formation" description="Register any type of profit or non-profit entity." />
-                <CardComponent image={SVG2} title="IP" description="Register trademarks, copyrights and patents." />
+                <CardComponent url="/dashboard/ip" image={SVG2} title="IP" description="Register trademarks, copyrights and patents." />
                 <CardComponent image={SVG4} title="Compliance" description="Get local licenses and permits to do business." />
                 <CardComponent image={SVG3} title="Maintenance" description="Manage your company records and filings." />
             </div>

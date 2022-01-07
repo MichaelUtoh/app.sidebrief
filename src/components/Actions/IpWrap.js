@@ -1,11 +1,13 @@
 import React from "react"
-import IpInfoComponent from './formationComponent'
+import IpInfoComponent from './ipComponent'
 import LoginComponent from "../Authentication/login"
 import NavbarComponent from '../Navigation/navbar'
 import SidebarComponent from "../Dashboard/sidebar"
 
 
-const FormationNewComponent = () => {
+const IpNewComponent = () => {
+
+    document.title = "IP • Sidebrief"
 
     const token = localStorage.getItem("token")
     if (!token) {
@@ -23,4 +25,4 @@ const FormationNewComponent = () => {
     )
 }
 
-export default FormationNewComponent
+export default IpNewComponent

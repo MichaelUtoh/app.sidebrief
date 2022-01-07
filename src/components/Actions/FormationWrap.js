@@ -7,6 +7,8 @@ import SidebarComponent from "../Dashboard/sidebar"
 
 const FormationNewComponent = () => {
 
+    document.title = "Formation • Sidebrief"
+
     const token = localStorage.getItem("token")
     if (!token) {
         return <LoginComponent />

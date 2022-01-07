@@ -8,9 +8,9 @@ const IpInfoComponent = () => {
     const formik = useFormik({
         initialValues: {
             country: "Nigeria",
-            businessName1: "",
-            businessName2: "",
-            businessName3: "",
+            ipDescription: "",
+            ipType: "Trademark",
+            // businessName3: "",
             businessFunction1: "",
             businessFunction2: "",
             businessFunction3: "",
@@ -44,14 +44,11 @@ const IpInfoComponent = () => {
                 <div className="abstract-sidebar flex flex-col justify-start mr-4 w-3/12">
                     <ul>
                         <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#country">Country</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#name">Business Name</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#function">Business Function</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#address">Business Address</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#capital">Share Capital</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#shareholders">Shareholders</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#directors">Directors</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#owners">Beneficial Owners</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#review">Review & Submit</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#name">IP Details</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#function">IP Use</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#address">IP Owner</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#capital">Representative</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#shareholders">Notice Address</a> </li>
                     </ul>
                     
                 </div>
@@ -60,7 +57,7 @@ const IpInfoComponent = () => {
 
                     <div className="p-2 lg:w-10/12" id="country">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Country</p>
-                        <p className="font-two text-sm text-[#757575] mt-2">Where would you like to register your new entity?</p>
+                        <p className="font-two text-sm text-[#757575] mt-2">Where would you like to register your IP?</p>
                         <div className="flex items-center pt-2">
                             <select
                                 className="bg-gray-100 h-10 mr-1 outline-none p-2 w-full"
@@ -81,9 +78,43 @@ const IpInfoComponent = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="name">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">Business Name</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">What is the name of your new entity, provide at least two (2) names?</p>
+                    <div className="mt-6 p-2 lg:w-10/12" id="capital">
+                        <p className="flex font-one flex-col font-bold text-xl" id="country">IP Details</p>
+                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">What type of IP do you want to register?</p>
+                        <div className="pt-2">
+                            <input
+                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                id="shareCapitalAmount"
+                                name="shareCapitalAmount"
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                placeholder="IP Description"
+                                type="text"
+                                value={formik.values.shareCapitalAmount}
+                            />
+                            <div className="flex items-center my-1">
+                                <select
+                                    className="bg-gray-100 h-10 outline-none p-2 text-[#141414] text-sm w-full"
+                                    id="shareCapitalType"
+                                    name="shareCapitalType"
+                                    onBlur={formik.handleBlur}
+                                    onChange={formik.handleChange}
+                                    type="text"
+                                    value={formik.values.shareCapitalType}
+                                >
+                                    <option>Trademark</option>
+                                    <option>Patent</option>
+                                    <option>Copyright</option>
+                                    <option>Industrial Design</option>
+                                </select>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* <div className="mt-6 p-2 lg:w-10/12" id="name">
+                        <p className="flex font-one flex-col font-bold text-xl" id="country">IP Details</p>
+                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">What type of IP do you want to register?</p>
                         <div className="flex items-center pt-2">
                             <input
                                 className="bg-gray-100 mr-1 outline-none p-2 w-full"
@@ -315,7 +346,7 @@ const IpInfoComponent = () => {
                             and agree to our <a className="text-cyan-600" href="#">Terms and Conditions of Service</a>.
                         </p>
                     </div>
-
+ */}
                     <div className="mt-2 p-2 w-full">
                     <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12">Review and Submit</button>
                     </div>

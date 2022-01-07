@@ -5,6 +5,7 @@ import LoginComponent from './components/Authentication/login';
 import RegisterComponent from './components/Authentication/register';
 import DashboardNavComponent from './components/Dashboard';
 import FormationNewComponent from './components/Actions/FormationWrap';
+import IpNewComponent from './components/Actions/IpWrap';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
           <Route path="/forgot-password" index element={<ForgotPasswordComponent />} />
           <Route path="/dashboard" index element={<DashboardNavComponent />} />
           <Route path="/dashboard/formation" index element={<FormationNewComponent />} />
-          <Route path="/dashboard/ip" index element={<FormationNewComponent />} />
+          <Route path="/dashboard/ip" index element={<IpNewComponent />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
