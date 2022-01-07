@@ -1,10 +1,17 @@
 import React from "react"
-import FormationInfoComponent from '../Actions/formation'
-import SidebarComponent from "../Dashboard/sidebar"
+import FormationInfoComponent from './formationComponent'
+import LoginComponent from "../Authentication/login"
 import NavbarComponent from '../Navigation/navbar'
+import SidebarComponent from "../Dashboard/sidebar"
 
 
 const FormationNewComponent = () => {
+
+    const token = localStorage.getItem("token")
+    if (!token) {
+        return <LoginComponent />
+    }
+
     return (
         <div className="flex max-h-screen">
             <SidebarComponent />
