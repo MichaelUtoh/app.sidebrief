@@ -1,10 +1,17 @@
 import React from 'react'
+import LoginComponent from '../Authentication/login'
 import HeroComponent from '../Hero'
 import NavbarComponent from '../Navigation/navbar'
 import DashboardNavbarComponent from './sidebar'
 
 
-const DashboardNavComponent = () => {    
+const DashboardNavComponent = () => {
+    const token = localStorage.getItem("token")
+    console.log(token);
+
+    if (!token) {
+        return <LoginComponent />
+    }
 
     return (
         <div className="flex">

@@ -3,10 +3,29 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { BiKey, BiUser } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
-import { PropTypes } from 'prop-types'
-
+import axios from 'axios'
 
 const LoginComponent = ({setToken}) => {
+
+    const loginUser = async (values) => {
+        await axios({
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            url: 'http://localhost:8080/login',
+            data: values
+        })
+        .then((res) => {
+            console.log(res.data);
+            localStorage.setItem({
+                "token": res.data.token,
+                "name": res.data.name
+            })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+
 
     const formik = useFormik({
         initialValues: {
@@ -21,9 +40,9 @@ const LoginComponent = ({setToken}) => {
             .max(30, "Must be 30 characters or less")
             .required("Required")
         }),
-        onSubmit: (values) => {
-            console.log(values);
-    }
+        onSubmit: async (values) => {
+            const token = await loginUser(values);
+        }
     })
 
     return (
@@ -86,10 +105,6 @@ const LoginComponent = ({setToken}) => {
             </div>
         </div>
     )
-}
-
-LoginComponent.propTypes = {
-  setToken: PropTypes.func.isRequired
 }
 
 export default LoginComponent

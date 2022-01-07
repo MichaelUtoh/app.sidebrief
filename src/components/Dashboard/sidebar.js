@@ -6,6 +6,9 @@ const SidebarComponent = () => {
 
     const url = window.location.pathname
     console.log(url);
+    const handleLogout = () => {
+        localStorage.clear()
+    }
 
     return (
         <div className="bg-gray-50 flex flex-col items-center justify-start py-4 static">
@@ -50,7 +53,7 @@ const SidebarComponent = () => {
                     <li className="ml-2 link-display text-[#5a5a5a]">Settings</li>
                 </div>
 
-                <Link to="/login">
+                <Link to="/login" onClick={() => handleLogout()}>
                     <div
                         className={ url === "/login" ?
                             "cursor-pointer flex font-two items-center justify-start link-animate-visited rounded-r-sm mr-2 mb-2 p-2 lg:pl-6" :

@@ -10,7 +10,6 @@ import FormationNewComponent from './components/Actions';
 function App() {
   document.title = "Home • Sidebrief"
   
-
   return (
     <div className="min-h-screen">
       <BrowserRouter>
