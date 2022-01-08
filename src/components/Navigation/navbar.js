@@ -7,7 +7,7 @@ const NavbarComponent = () => {
         <div className="flex justify-between w-full px-6 p-4">
             <div className="border flex items-center min-w-4/12 rounded-md text-[#5a5a5a]">
                 <BiSearchAlt className="mx-2" color="#5a5a5a" size={20} />
-                <input className="bg-[#f8f8f8] outline-none p-2 rounded-r-md" name="" placeholder="" />
+                <input className="bg-[#fff] outline-none p-2 rounded-r-md" name="" placeholder="" />
             </div>
 
             <div className="flex items-center justify-end w-4/12">

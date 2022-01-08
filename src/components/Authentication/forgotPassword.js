@@ -55,6 +55,7 @@ const ForgotPasswordComponent = () => {
 
                     </div>
                 </form>
+                <p className="absolute bottom-5 right-25 text-[#8a8a8a] text-xs">© Sidebrief Inc. All Rights Reserved.</p>
             </div>
         </div>
     )
