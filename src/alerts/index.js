@@ -10,7 +10,7 @@ export const notify = () => toast('You have logged in succesfully.', {
     position: 'top-center',
     style: {
         background: "#5a5a5a",
-        color: "#80deea",
+        color: "#fff",
         width: "100%"
     }
 });

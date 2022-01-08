@@ -5,7 +5,7 @@ import { BiCog, BiHomeAlt, BiPowerOff, BiRegistered, BiUser} from 'react-icons/b
 const SidebarComponent = () => {
 
     const url = window.location.pathname
-    console.log(url);
+    // console.log(url);
     const handleLogout = () => {
         localStorage.clear()
     }

@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import { BiKey, BiUser } from 'react-icons/bi'
 import axios from 'axios'
 
-const LoginComponent = ({setToken}) => {
+const LoginComponent = () => {
 
     const navigate = useNavigate()
     const loginUser = async (values) => {

@@ -10,13 +10,12 @@ import { Toaster } from 'react-hot-toast'
 
 const HeroComponent = () => {
 
-    const details = JSON.parse(localStorage.getItem("data"))
-    const username = details.name;
+    const user = JSON.parse(localStorage.getItem("data"))
 
     return (
         <div className="flex flex-col mt-14 mb-10 px-6">
             <div>
-                <p className="font-medium font-one text-3xl">Hello {username}</p>
+                <p className="font-medium font-one text-3xl">Hello {user.name}</p>
                 <p className="font-two text-[#5a5a5a]">What would you like to do today?</p>
             </div>
 
