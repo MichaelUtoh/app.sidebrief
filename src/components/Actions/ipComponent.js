@@ -10,28 +10,12 @@ const IpInfoComponent = () => {
             country: "Nigeria",
             ipDescription: "",
             ipType: "Trademark",
-            // businessName3: "",
-            businessFunction1: "",
-            businessFunction2: "",
-            businessFunction3: "",
-            businessAddress: "",
-
-            shareCapitalAmount: "",
-            shareCapitalType: "Ordinary Shares",
-            
-            shareholderFullname: "",
-            shareholderEmail: "",
-            shareholderPhoneNo: "",
-            shareholderSharePercentage: "",
-            shareholderShareCapitalType: "Ordinary Shares",
-
-            directorFullname: "",
-            directorEmail: "",
-            directorPhoneNo: "",
-
-            beneficialOwnerFullname: "",
-            beneficialOwnerEmail: "",
-            beneficialOwnerPhoneNo: "",
+            ipUse: "",
+            ipOwner: "",
+            representativeFullname: "",
+            representativeEmail: "",
+            representativePhoneNo: "",
+            address: "",
         }
     })
 
@@ -44,11 +28,11 @@ const IpInfoComponent = () => {
                 <div className="abstract-sidebar flex flex-col justify-start mr-4 w-3/12">
                     <ul>
                         <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#country">Country</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#name">IP Details</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#function">IP Use</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#address">IP Owner</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#capital">Representative</a> </li>
-                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#shareholders">Notice Address</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#ipDetails">IP Details</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#ipUse">IP Use</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#ipOwner">IP Owner</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#representative">Representative</a> </li>
+                        <li className="hover:bg-gray-100 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#address">Notice Address</a> </li>
                     </ul>
                     
                 </div>
@@ -79,28 +63,28 @@ const IpInfoComponent = () => {
                     </div>
 
                     <div className="mt-6 p-2 lg:w-10/12" id="capital">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">IP Details</p>
+                        <p className="flex font-one flex-col font-bold text-xl" id="ipDetails">IP Details</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">What type of IP do you want to register?</p>
                         <div className="pt-2">
                             <input
                                 className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="shareCapitalAmount"
-                                name="shareCapitalAmount"
+                                id="ipDescription"
+                                name="ipDescription"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
                                 placeholder="IP Description"
                                 type="text"
-                                value={formik.values.shareCapitalAmount}
+                                value={formik.values.ipDescription}
                             />
                             <div className="flex items-center my-1">
                                 <select
                                     className="bg-gray-100 h-10 outline-none p-2 text-[#141414] text-sm w-full"
-                                    id="shareCapitalType"
-                                    name="shareCapitalType"
+                                    id="ipType"
+                                    name="ipType"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
                                     type="text"
-                                    value={formik.values.shareCapitalType}
+                                    value={formik.values.ipType}
                                 >
                                     <option>Trademark</option>
                                     <option>Patent</option>
@@ -112,231 +96,97 @@ const IpInfoComponent = () => {
                         </div>
                     </div>
 
-                    {/* <div className="mt-6 p-2 lg:w-10/12" id="name">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">IP Details</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">What type of IP do you want to register?</p>
+                    <div className="mt-6 p-2 lg:w-10/12" id="address">
+                        <p className="flex font-one flex-col font-bold text-xl" id="ipUse">IP Use</p>
+                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">What services or products will you use the IP for, list as many as you can?</p>
                         <div className="flex items-center pt-2">
                             <input
                                 className="bg-gray-100 mr-1 outline-none p-2 w-full"
-                                id="businessName1"
-                                name="businessName1"
+                                id="ipUse"
+                                name="ipUse"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                placeholder="e.g. Web3.0 Limited"
+                                placeholder="e.g. Consulting Services"
                                 type="text"
-                                value={formik.values.businessName1}
-                            />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
-                        </div>
-                    </div>
-
-                    <div className="mt-6 p-2 lg:w-10/12" id="function">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">Business Function</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">What does your business do, list as many as you can?</p>
-                        <div className="flex items-center pt-2">
-                            <input
-                                className="bg-gray-100 mr-1 outline-none p-2 w-full"
-                                id="businessFunction1"
-                                name="businessFunction1"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="e.g. Software Development"
-                                type="text"
-                                value={formik.values.businessFunction1}
+                                value={formik.values.ipUse}
                             />
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
                         </div>
                     </div>
 
                     <div className="mt-6 p-2 lg:w-10/12" id="address">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">Business Address</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">If you have a local registered address for your company, please provide below?</p>
+                        <p className="flex font-one flex-col font-bold text-xl" id="ipOwner">IP Owner</p>
+                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who will own this IP, this may be a person or a registered business?</p>
                         <div className="flex items-center pt-2">
                             <input
                                 className="bg-gray-100 mr-1 outline-none p-2 w-full"
-                                id="businessAddress"
-                                name="businessAddress"
+                                id="ipOwner"
+                                name="ipOwner"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                placeholder="21, Admiralty way, Lekki, Lagos"
+                                placeholder="e.g. John Doe"
                                 type="text"
-                                value={formik.values.businessAddress}
+                                value={formik.values.ipOwner}
                             />
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="capital">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">Share Capital</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">What number of shares will your company have as share capital?</p>
-                        <div className="pt-2">
+                    <div className="mt-6 p-2 lg:w-10/12" id="owners">
+                        <p className="flex font-one flex-col font-bold text-xl" id="representative">Representative</p>
+                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who will sign the registration documents?</p>
+                        <div className="flex flex-col items-start pt-2">
                             <input
                                 className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="shareCapitalAmount"
-                                name="shareCapitalAmount"
+                                id="representativeFullname"
+                                name="representativeFullname"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                placeholder="e.g. 1,000,000"
+                                placeholder="Fullname"
                                 type="text"
-                                value={formik.values.shareCapitalAmount}
+                                value={formik.values.representativeFullname}
                             />
-                            <div className="flex items-center my-1">
-                                <select
-                                    className="bg-gray-100 h-10 outline-none p-2 text-[#141414] text-sm w-full"
-                                    id="shareCapitalType"
-                                    name="shareCapitalType"
+                            <input
+                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                id="representativeEmail"
+                                name="representativeEmail"
+                                onBlur={formik.handleBlur}
+                                onChange={formik.handleChange}
+                                placeholder="Email"
+                                type="text"
+                                value={formik.values.representativeEmail}
+                            />
+                            <div className="flex items-center w-full">
+                                <input
+                                    className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                    id="representativePhoneNo"
+                                    name="representativePhoneNo"
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
+                                    placeholder="e.g. 080xxxxxxx2"
                                     type="text"
-                                    value={formik.values.shareCapitalType}
-                                >
-                                    <option>Ordinary Shares</option>
-                                    <option>Preference Shares</option>
-                                </select>
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                                    value={formik.values.representativePhoneNo}
+                                />
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white">Add</button>
                             </div>
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="shareholders">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">Shareholders</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who are the shareholders or the owners of your company?</p>
-                        <div className="flex flex-col items-start pt-2">
+                    <div className="mt-6 p-2 lg:w-10/12" id="name">
+                        <p className="flex font-one flex-col font-bold text-xl" id="address">Notice Address</p>
+                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">Where do you want to receive communications relating to your IP?</p>
+                        <div className="flex items-center pt-2">
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="shareholderFullname"
-                                name="shareholderFullname"
+                                className="bg-gray-100 mr-1 outline-none p-2 w-full"
+                                id="address"
+                                name="address"
                                 onBlur={formik.handleBlur}
                                 onChange={formik.handleChange}
-                                placeholder="Fullname"
+                                placeholder="e.g. 21, Palmgrove Lane, Victoria Islands"
                                 type="text"
-                                value={formik.values.shareholderFullname}
+                                value={formik.values.address}
                             />
-                            <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="shareholderEmail"
-                                name="shareholderEmail"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="Email"
-                                type="text"
-                                value={formik.values.shareholderEmail}
-                            />
-                            <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="shareholderPhoneNo"
-                                name="shareholderPhoneNo"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="e.g. 080xxxxxxx2"
-                                type="text"
-                                value={formik.values.shareholderPhoneNo}
-                            />
-                            <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="shareholderSharePercentage"
-                                name="shareholderSharePercentage"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="Percentage of Shares"
-                                type="text"
-                                value={formik.values.shareholderSharePercentage}
-                            />
-                            <div className="flex items-center w-full">
-                                <select
-                                    className="bg-gray-100 grow h-10 outline-none p-2 text-[#141414] text-sm"
-                                    id="shareholderShareCapitalType"
-                                    name="shareholderShareCapitalType"
-                                    onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
-                                    type="text"
-                                    value={formik.values.shareholderShareCapitalType}
-                                >
-                                    <option>Ordinary Shares</option>
-                                    <option>Preference Shares</option>
-                                </select>
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
-                            </div>
-                        </div>                        
-                    </div>
-
-                    <div className="mt-6 p-2 lg:w-10/12" id="directors">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">Directors</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who are the directors that will manage the affairs of your company?</p>
-                        <div className="flex flex-col items-start pt-2">
-                            <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="directorFullname"
-                                name="directorFullname"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="Fullname"
-                                type="text"
-                                value={formik.values.directorFullname}
-                            />
-                            <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="directorEmail"
-                                name="directorEmail"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="Email"
-                                type="text"
-                                value={formik.values.directorEmail}
-                            />
-                            <div className="flex items-center w-full">
-                                <input
-                                    className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                    id="directorPhoneNo"
-                                    name="directorPhoneNo"
-                                    onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
-                                    placeholder="e.g. 080xxxxxxx2"
-                                    type="text"
-                                    value={formik.values.directorPhoneNo}
-                                />
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white">Add</button>
-                            </div>
-                        </div>                        
-                    </div>
-
-                    <div className="mt-6 p-2 lg:w-10/12" id="owners">
-                        <p className="flex font-one flex-col font-bold text-xl" id="country">Beneficial Owners</p>
-                        <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who are the ultimate beneficial owners of your company, if any?</p>
-                        <div className="flex flex-col items-start pt-2">
-                            <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="beneficialOwnerFullname"
-                                name="beneficialOwnerFullname"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="Fullname"
-                                type="text"
-                                value={formik.values.beneficialOwnerFullname}
-                            />
-                            <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                id="beneficialOwnerEmail"
-                                name="beneficialOwnerEmail"
-                                onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
-                                placeholder="Email"
-                                type="text"
-                                value={formik.values.beneficialOwnerEmail}
-                            />
-                            <div className="flex items-center w-full">
-                                <input
-                                    className="bg-gray-100 my-1 outline-none p-2 w-full"
-                                    id="beneficialOwnerPhoneNo"
-                                    name="beneficialOwnerPhoneNo"
-                                    onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
-                                    placeholder="e.g. 080xxxxxxx2"
-                                    type="text"
-                                    value={formik.values.beneficialOwnerPhoneNo}
-                                />
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white">Add</button>
-                            </div>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
                         </div>
                     </div>
 
@@ -346,9 +196,9 @@ const IpInfoComponent = () => {
                             and agree to our <a className="text-cyan-600" href="#">Terms and Conditions of Service</a>.
                         </p>
                     </div>
- */}
+
                     <div className="mt-2 p-2 w-full">
-                    <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12">Review and Submit</button>
+                        <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12">Review and Submit</button>
                     </div>
 
                 </div>

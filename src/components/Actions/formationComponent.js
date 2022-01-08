@@ -211,7 +211,7 @@ const FormationInfoComponent = () => {
                                 type="text"
                                 value={formik.values.shareholderSharePercentage}
                             />
-                            <div className="flex items-center w-full">
+                            <div className="flex items-center my-1 w-full">
                                 <select
                                     className="bg-gray-100 grow h-10 outline-none p-2 text-[#141414] text-sm"
                                     id="shareholderShareCapitalType"
@@ -317,7 +317,7 @@ const FormationInfoComponent = () => {
                     </div>
 
                     <div className="mt-2 p-2 w-full">
-                    <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12">Review and Submit</button>
+                        <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12">Review and Submit</button>
                     </div>
 
                 </div>
