@@ -16,8 +16,7 @@ const LoginComponent = ({setToken}) => {
             data: values
         })
         .then((res) => {
-            console.log(res.data);
-            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("data", JSON.stringify(res.data))
             navigate("/dashboard")
         })
         .catch((err) => {

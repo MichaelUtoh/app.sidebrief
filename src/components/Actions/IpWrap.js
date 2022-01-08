@@ -9,8 +9,8 @@ const IpNewComponent = () => {
 
     document.title = "IP • Sidebrief"
 
-    const token = localStorage.getItem("token")
-    if (!token) {
+    const user = localStorage.getItem("data")
+    if (!user) {
         return <LoginComponent />
     }
 

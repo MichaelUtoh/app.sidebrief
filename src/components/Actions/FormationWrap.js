@@ -5,12 +5,12 @@ import NavbarComponent from '../Navigation/navbar'
 import SidebarComponent from "../Dashboard/sidebar"
 
 
-const FormationNewComponent = () => {
+const FormationWrap = () => {
 
     document.title = "Formation • Sidebrief"
 
-    const token = localStorage.getItem("token")
-    if (!token) {
+    const user = localStorage.getItem("data")
+    if (!user) {
         return <LoginComponent />
     }
 
@@ -25,4 +25,4 @@ const FormationNewComponent = () => {
     )
 }
 
-export default FormationNewComponent
+export default FormationWrap

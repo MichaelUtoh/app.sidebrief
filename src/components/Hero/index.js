@@ -8,12 +8,15 @@ import { notify } from '../../alerts'
 import { Toaster } from 'react-hot-toast'
 
 
-const HeroComponent = () => {    
+const HeroComponent = () => {
+
+    const details = JSON.parse(localStorage.getItem("data"))
+    const username = details.name;
 
     return (
         <div className="flex flex-col mt-14 mb-10 px-6">
             <div>
-                <p className="font-medium font-one text-3xl">Hello Michael</p>
+                <p className="font-medium font-one text-3xl">Hello {username}</p>
                 <p className="font-two text-[#5a5a5a]">What would you like to do today?</p>
             </div>
 

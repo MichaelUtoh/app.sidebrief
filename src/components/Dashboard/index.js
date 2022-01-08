@@ -7,7 +7,7 @@ import DashboardNavbarComponent from './sidebar'
 
 const DashboardNavComponent = () => {
     
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("data")
     if (!token) {
         return <LoginComponent />
     }
