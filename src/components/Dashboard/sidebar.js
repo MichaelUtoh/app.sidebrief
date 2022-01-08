@@ -11,7 +11,7 @@ const SidebarComponent = () => {
     }
 
     return (
-        <div className="bg-gray-50 flex flex-col h-screen items-center justify-start py-4 static">
+        <div className="bg-gray-50 flex flex-col h-screen items-center justify-start py-4 static z-10">
 
             <img alt="" className="mt-2 responsive" src={require("../../assets/sidebrief.png")} width="96px" />
 
@@ -39,19 +39,27 @@ const SidebarComponent = () => {
                     </div>
                 </Link>
 
-                <div
-                    className="cursor-pointer flex font-two items-center justify-start link-animate rounded-r-sm mr-2 mb-2 p-2 lg:pl-6"
-                >
-                    <BiUser className="text-[#5a5a5a]" fontSize={18} />
-                    <li className="ml-2 link-display text-[#5a5a5a]">My Company</li>
-                </div>
+                <Link to="/">
+                    <div
+                        className={ 
+                            url === "/" ? "cursor-pointer flex font-two items-center justify-start link-animate-visited rounded-r-sm mr-2 mb-2 p-2 lg:pl-6" :
+                            "cursor-pointer flex font-two items-center justify-start link-animate rounded-r-sm mr-2 mb-2 p-2 lg:pl-6"}
+                    >
+                        <BiUser className="text-[#5a5a5a]" fontSize={18} />
+                        <li className="ml-2 link-display text-[#5a5a5a]">My Company</li>
+                    </div>
+                </Link>
 
+                <Link to="/settings">
                 <div
-                    className="cursor-pointer flex font-two items-center justify-start link-animate rounded-r-sm mr-2 mb-2 p-2 lg:pl-6"
+                    className={ 
+                        url === "/settings" ? "cursor-pointer flex font-two items-center justify-start link-animate-visited rounded-r-sm mr-2 mb-2 p-2 lg:pl-6" :
+                        "cursor-pointer flex font-two items-center justify-start link-animate rounded-r-sm mr-2 mb-2 p-2 lg:pl-6"}
                 >
                     <BiCog className="text-[#5a5a5a]" fontSize={18} />
                     <li className="ml-2 link-display text-[#5a5a5a]">Settings</li>
                 </div>
+                </Link>
 
                 <Link to="/login" onClick={() => handleLogout()}>
                     <div
