@@ -311,8 +311,8 @@ const FormationInfoComponent = () => {
 
                     <div className="mt-6 p-2 w-7/12" id="review">
                         <p className="text-[#5a5a5a] text-xs">By submitting this information and using Sidebrief, 
-                            you agree to meet the <a className="text-cyan-600" href="#">KYC requirements </a> 
-                            and agree to our <a className="text-cyan-600" href="#">Terms and Conditions of Service</a>.
+                            you agree to meet the <a className="text-cyan-600" href="/">KYC requirements </a> 
+                            and agree to our <a className="text-cyan-600" href="/">Terms and Conditions of Service</a>.
                         </p>
                     </div>
 

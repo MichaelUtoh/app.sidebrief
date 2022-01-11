@@ -1,9 +1,4 @@
 import React from 'react'
-import CardComponent, { CardComponent1, CardComponent2, CardComponent3, CardComponent4 } from './card'
-import SVG1 from '../../assets/dashboard/01.svg'
-import SVG2 from '../../assets/dashboard/02.svg'
-import SVG3 from '../../assets/dashboard/03.svg'
-import SVG4 from '../../assets/dashboard/04.svg'
 import { notify } from '../../alerts'
 import { Toaster } from 'react-hot-toast'
 
@@ -25,10 +20,6 @@ const HeroComponent = () => {
                 <CardComponent2 />
                 <CardComponent3 />
                 <CardComponent4 />
-                {/* <CardComponent url="/dashboard/formation" image={SVG1} title="Formation" description="Register any type of profit or non-profit entity." />
-                <CardComponent url="/dashboard/ip" image={SVG2} title="IP" description="Register trademarks, copyrights and patents." />
-                <CardComponent image={SVG4} title="Compliance" description="Get local licenses and permits to do business." />
-                <CardComponent image={SVG3} title="Maintenance" description="Manage your company records and filings." /> */}
             </div>
 
             <div>
