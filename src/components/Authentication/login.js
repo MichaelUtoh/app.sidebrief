@@ -39,8 +39,8 @@ const LoginComponent = () => {
             .required("Required")
         }),
         onSubmit: async (values) => {
+            loginUser(values);
             console.log(values);
-            // const token = await loginUser(values);
         }
     })
 

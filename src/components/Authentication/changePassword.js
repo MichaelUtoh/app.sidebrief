@@ -5,7 +5,7 @@ import { BiKey } from 'react-icons/bi'
 import axios from 'axios'
 import * as Yup from 'yup'
 
-const ChangePasswordComponent = ({setToken}) => {
+const ChangePasswordComponent = () => {
 
     const navigate = useNavigate()
     const loginUser = async (values) => {
@@ -40,8 +40,8 @@ const ChangePasswordComponent = ({setToken}) => {
             .required("Required")
         }),
         onSubmit: async (values) => {
+            loginUser(values);
             console.log(values);
-            // const token = await loginUser(values);
         }
     })
 
