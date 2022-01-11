@@ -1,4 +1,5 @@
 import React from 'react'
+import { CardComponent1, CardComponent2, CardComponent3, CardComponent4 } from './card'
 import { notify } from '../../alerts'
 import { Toaster } from 'react-hot-toast'
 
