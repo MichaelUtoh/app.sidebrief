@@ -40,7 +40,8 @@ const ChangePasswordComponent = ({setToken}) => {
             .required("Required")
         }),
         onSubmit: async (values) => {
-            const token = await loginUser(values);
+            console.log(values);
+            // const token = await loginUser(values);
         }
     })
 

@@ -1,4 +1,3 @@
-import toast, { Toaster } from "react-hot-toast";
 
 
 export const notify = () => toast('You have logged in succesfully.', {
