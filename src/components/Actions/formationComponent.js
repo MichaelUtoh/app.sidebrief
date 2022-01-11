@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import countryData from '../../assets/countries.json'
 
 
 const FormationInfoComponent = () => {
+
+    const [country, setCountry] = useState([])
+
+    const handleCountryData = (e) => {
+        console.log(country);
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -35,7 +41,7 @@ const FormationInfoComponent = () => {
         }
     })
 
-    console.log(formik.values);
+    // console.log(formik.values);
     
     return (
         <>
@@ -67,9 +73,9 @@ const FormationInfoComponent = () => {
                                 id="country"
                                 name="country"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setCountry(country.concat(e.target.value))}
                                 type="text"
-                                value={formik.values.country}
+                                value={country[country.length - 1]}
                             >
                                 
                                 {countryData.map((country) => {
@@ -77,7 +83,7 @@ const FormationInfoComponent = () => {
                                 })}
 
                             </select>
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleCountryData()}>Add</button>
                         </div>
                     </div>
 
