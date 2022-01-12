@@ -6,9 +6,18 @@ import countryData from '../../assets/countries.json'
 const FormationInfoComponent = () => {
 
     const [country, setCountry] = useState([])
+    const [businessName, setBusinessName] = useState("")
+    const [businessList, setBusinessList] = useState(new Set())
+    const lastValue = Array.from(businessList).pop()
+
 
     const handleCountryData = (e) => {
         console.log(country);
+    }
+    
+    const handleBusinessData = (e) => {
+        businessList.add(businessName);
+        console.log(businessList);
     }
 
     const formik = useFormik({
@@ -75,13 +84,11 @@ const FormationInfoComponent = () => {
                                 onBlur={formik.handleBlur}
                                 onChange={(e) => setCountry(country.concat(e.target.value))}
                                 type="text"
-                                value={country[country.length - 1]}
-                            >
-                                
+                                value={country[country.length-1]}
+                            >                                
                                 {countryData.map((country) => {
                                     return <option className="text-[#5a5a5a]" key={country.code}>{country.name}</option>;
                                 })}
-
                             </select>
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleCountryData()}>Add</button>
                         </div>
@@ -96,12 +103,12 @@ const FormationInfoComponent = () => {
                                 id="businessName1"
                                 name="businessName1"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setBusinessName(e.target.value)}
                                 placeholder="e.g. Web3.0 Limited"
                                 type="text"
-                                value={formik.values.businessName1}
+                                value={businessName}
                             />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessData()}>Add</button>
                         </div>
                     </div>
 
