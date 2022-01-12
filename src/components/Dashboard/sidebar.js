@@ -13,7 +13,9 @@ const SidebarComponent = () => {
     return (
         <div className="bg-gray-50 flex flex-col h-screen items-center justify-start py-4 static z-10">
 
-            <img alt="" className="mt-2 responsive" src={require("../../assets/sidebrief.png")} width="96px" />
+            <div className="ml-7 p-2 pt-6 w-full">
+                <img alt="" className="responsive" src={require("../../assets/sidebrief.png")} width="96px" />
+            </div>
 
             {/* <Router> */}
             <ul className="mt-48 w-full">

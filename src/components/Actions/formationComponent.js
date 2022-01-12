@@ -5,10 +5,21 @@ import countryData from '../../assets/countries.json'
 
 const FormationInfoComponent = () => {
 
-    const [country, setCountry] = useState([])
+    const [country, setCountry] = useState("Nigeria")
+    const [countryList, setCountryList] = (new Set())
+
     const [businessName, setBusinessName] = useState("")
     const [businessList, setBusinessList] = useState(new Set())
-    const lastValue = Array.from(businessList).pop()
+
+    const [businessFunction, setBusinessFunction] = useState("")
+    const [businessFunctionList, setBusinessFunctionList] = useState(new Set())
+    
+    const [businessAddress, setBusinessAddress] = useState("")
+    const [businessAddressList, setBusinessAddressList] = useState(new Set())
+
+    const [shareCapitalAmount, setShareCapitalAmount] = useState("")
+    const [shareCapitalType, setShareCapitalType] = useState("Ordinary Shares")
+    const [shareCapitalDetails, setShareCapitalDetails] = useState([])
 
 
     const handleCountryData = (e) => {
@@ -16,8 +27,28 @@ const FormationInfoComponent = () => {
     }
     
     const handleBusinessData = (e) => {
-        businessList.add(businessName);
-        console.log(businessList);
+        if (businessName.length > 0) {
+            businessList.add(businessName);
+        };
+    }
+
+    const handleBusinessFunction = (e) => {
+        if (businessFunction.length > 0) {
+            businessFunctionList.add(businessFunction);
+        }
+    }
+
+    const handleBusinessAddress = () => {
+        if (businessAddress.length > 0) {
+            businessAddressList.add(businessAddress);
+        }
+    }
+
+    const handleShareCapital = () => {
+        if (shareCapitalAmount.length > 0) {
+            shareCapitalDetails.add(shareCapitalAmount, " ", shareCapitalType)
+        }
+        console.log(shareCapitalDetails);
     }
 
     const formik = useFormik({
@@ -82,10 +113,10 @@ const FormationInfoComponent = () => {
                                 id="country"
                                 name="country"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setCountry(country.concat(e.target.value))}
+                                onChange={(e) => setCountry(e.target.value)}
                                 type="text"
-                                value={country[country.length-1]}
-                            >                                
+                                value={country}
+                            >
                                 {countryData.map((country) => {
                                     return <option className="text-[#5a5a5a]" key={country.code}>{country.name}</option>;
                                 })}
@@ -121,12 +152,12 @@ const FormationInfoComponent = () => {
                                 id="businessFunction1"
                                 name="businessFunction1"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setBusinessFunction(e.target.value)}
                                 placeholder="e.g. Software Development"
                                 type="text"
-                                value={formik.values.businessFunction1}
+                                value={businessFunction}
                             />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessFunction()}>Add</button>
                         </div>
                     </div>
 
@@ -139,12 +170,12 @@ const FormationInfoComponent = () => {
                                 id="businessAddress"
                                 name="businessAddress"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setBusinessAddress(e.target.value)}
                                 placeholder="21, Admiralty way, Lekki, Lagos"
                                 type="text"
-                                value={formik.values.businessAddress}
+                                value={businessAddress}
                             />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessAddress()}>Add</button>
                         </div>
                     </div>
 
@@ -157,10 +188,10 @@ const FormationInfoComponent = () => {
                                 id="shareCapitalAmount"
                                 name="shareCapitalAmount"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setShareCapitalAmount(e.target.value)}
                                 placeholder="e.g. 1,000,000"
                                 type="text"
-                                value={formik.values.shareCapitalAmount}
+                                value={shareCapitalAmount}
                             />
                             <div className="flex items-center my-1">
                                 <select
@@ -175,7 +206,7 @@ const FormationInfoComponent = () => {
                                     <option>Ordinary Shares</option>
                                     <option>Preference Shares</option>
                                 </select>
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={(e) => handleShareCapital()}>Add</button>
                             </div>
                         </div>
                     </div>
