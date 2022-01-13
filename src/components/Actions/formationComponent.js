@@ -19,7 +19,9 @@ const FormationInfoComponent = () => {
 
     const [shareCapitalAmount, setShareCapitalAmount] = useState("")
     const [shareCapitalType, setShareCapitalType] = useState("Ordinary Shares")
-    const [shareCapitalDetails, setShareCapitalDetails] = useState([])
+
+    const [shareCapitalDetail, setShareCapitalDetail] = useState("")
+    const [shareCapitalList, setShareCapitalList] = useState(new Set())
 
 
     const handleCountryData = (e) => {
@@ -44,11 +46,14 @@ const FormationInfoComponent = () => {
         }
     }
 
-    const handleShareCapital = () => {
-        if (shareCapitalAmount.length > 0) {
-            shareCapitalDetails.add(shareCapitalAmount, " ", shareCapitalType)
-        }
-        console.log(shareCapitalDetails);
+    const handleShareCapitalDetail = () => {
+        // console.log(shareCapitalAmount);
+        // console.log(shareCapitalType);
+        setShareCapitalDetail(shareCapitalAmount + " " + shareCapitalType)
+        shareCapitalList.add(shareCapitalDetail)
+        console.log(shareCapitalDetail);
+        // if (shareCapitalAmount.length > 0) {
+        // }
     }
 
     const formik = useFormik({
@@ -199,14 +204,14 @@ const FormationInfoComponent = () => {
                                     id="shareCapitalType"
                                     name="shareCapitalType"
                                     onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
+                                    onChange={(e) => setShareCapitalType(e.target.value)}
                                     type="text"
-                                    value={formik.values.shareCapitalType}
+                                    value={shareCapitalType}
                                 >
                                     <option>Ordinary Shares</option>
                                     <option>Preference Shares</option>
                                 </select>
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={(e) => handleShareCapital()}>Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleShareCapitalDetail()}>Add</button>
                             </div>
                         </div>
                     </div>
