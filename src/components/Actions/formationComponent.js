@@ -19,7 +19,9 @@ const FormationInfoComponent = () => {
 
     const [shareCapitalAmount, setShareCapitalAmount] = useState("")
     const [shareCapitalType, setShareCapitalType] = useState("Ordinary Shares")
-    const [shareCapitalDetails, setShareCapitalDetails] = useState([])
+
+    const [shareCapitalDetail, setShareCapitalDetail] = useState("")
+    const [shareCapitalList, setShareCapitalList] = useState(new Set())
 
     const [shareholderFullname, setShareholderFullname] = useState("")
     const [shareholderEmail, setShareholderEmail] = useState("")
@@ -220,7 +222,7 @@ const FormationInfoComponent = () => {
                                     <option>Ordinary Shares</option>
                                     <option>Preference Shares</option>
                                 </select>
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={(e) => handleShareCapital()}>Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleShareCapitalDetail()}>Add</button>
                             </div>
                         </div>
                     </div>
