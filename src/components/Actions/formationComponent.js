@@ -20,8 +20,7 @@ const FormationInfoComponent = () => {
     const [shareCapitalAmount, setShareCapitalAmount] = useState("")
     const [shareCapitalType, setShareCapitalType] = useState("Ordinary Shares")
 
-    const [shareCapitalDetail, setShareCapitalDetail] = useState("")
-    const [shareCapitalList, setShareCapitalList] = useState(new Set())
+    const [shareCapitalList, setShareCapitalList] = useState([])
 
     const [shareholderFullname, setShareholderFullname] = useState("")
     const [shareholderEmail, setShareholderEmail] = useState("")
@@ -60,10 +59,11 @@ const FormationInfoComponent = () => {
         }
     }
 
-    const handleShareCapital = () => {
+    const handleShareCapitalDetail = () => {
         if (shareCapitalAmount.length > 0) {
             let shares = shareCapitalAmount + ", " + shareCapitalType
-            shareCapitalDetails.push(shares)
+            shareCapitalList.push(shares)
+            console.log(shareCapitalList);
         }
     }
 
