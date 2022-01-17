@@ -12,6 +12,19 @@ const IpInfoComponent = () => {
     const [ipType, setIpType] = useState("")
     const [ipDescriptionList, setIpDescriptionList] = useState([])
 
+    const [ipUse, setIpUse] = useState("")
+    const [ipUseList, setIpUseList] = useState([])
+
+    const [ipOwner, setIpOwner] = useState("")
+    const [ipOwnerList, setIpOwnerList] = useState([])
+
+    const [representativeFullname, setRepresentativeFullname] = useState("")
+    const [representativeEmail, setRepresentativeEmail] = useState("")
+    const [representativePhoneNo, setRepresentativePhoneNo] = useState("")
+    const [representativeInfoList, setRepresentativeInfoList] = useState([])
+
+    const [address, setAddress] = useState("")
+    const [addressInfoList, setAddressInfoList] = useState([])
 
 
     const handleCountryData = (e) => {
@@ -25,10 +38,45 @@ const IpInfoComponent = () => {
             "ipType": ipType
         }
         ipDescriptionList.push(ipInfo)
-        console.log(ipDescription);
-        console.log(ipType);
         console.log(ipDescriptionList);
     }
+
+    const handleIpUseInfo = () => {
+        if (ipUse.length > 2) {
+            ipUseList.push(ipUse)
+        }
+        console.log(ipUseList);
+    }
+
+    const handleIpOwnerInfo = () => {
+        if (ipOwner.length > 2) {
+            ipOwnerList.push(ipOwner)
+        }
+        console.log(ipOwnerList);
+    }
+
+    const handleRepresentativeInfo = () => {
+        let representativeDetails = {
+            "representativeFullname": representativeFullname,
+            "representativeEmail": representativeEmail,
+            "representativePhoneNo": representativePhoneNo
+        }
+        representativeInfoList.push(representativeDetails)
+        console.log(representativeInfoList);
+    }
+
+    const handleAddressInfo = () => {
+        if (address.length > 2) {
+            addressInfoList.push(address)
+        }
+        console.log(addressInfoList);
+    }
+
+    const handleReviewFormation = () => {
+        console.log({"details": "Successful"});
+    }
+
+
 
     const formik = useFormik({
         initialValues: {
@@ -128,12 +176,12 @@ const IpInfoComponent = () => {
                                 id="ipUse"
                                 name="ipUse"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setIpUse(e.target.value)}
                                 placeholder="e.g. Consulting Services"
                                 type="text"
-                                value={formik.values.ipUse}
+                                value={ipUse}
                             />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={(e) => handleIpUseInfo()}>Add</button>
                         </div>
                     </div>
 
@@ -146,12 +194,12 @@ const IpInfoComponent = () => {
                                 id="ipOwner"
                                 name="ipOwner"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setIpOwner(e.target.value)}
                                 placeholder="e.g. John Doe"
                                 type="text"
-                                value={formik.values.ipOwner}
+                                value={ipOwner}
                             />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleIpOwnerInfo()}>Add</button>
                         </div>
                     </div>
 
@@ -164,20 +212,20 @@ const IpInfoComponent = () => {
                                 id="representativeFullname"
                                 name="representativeFullname"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setRepresentativeFullname(e.target.value)}
                                 placeholder="Fullname"
                                 type="text"
-                                value={formik.values.representativeFullname}
+                                value={representativeFullname}
                             />
                             <input
                                 className="bg-gray-100 my-1 outline-none p-2 w-full"
                                 id="representativeEmail"
                                 name="representativeEmail"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setRepresentativeEmail(e.target.value)}
                                 placeholder="Email"
                                 type="text"
-                                value={formik.values.representativeEmail}
+                                value={representativeEmail}
                             />
                             <div className="flex items-center w-full">
                                 <input
@@ -185,12 +233,12 @@ const IpInfoComponent = () => {
                                     id="representativePhoneNo"
                                     name="representativePhoneNo"
                                     onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
+                                    onChange={(e) => setRepresentativePhoneNo(e.target.value)}
                                     placeholder="e.g. 080xxxxxxx2"
                                     type="text"
-                                    value={formik.values.representativePhoneNo}
+                                    value={representativePhoneNo}
                                 />
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleRepresentativeInfo()}>Add</button>
                             </div>
                         </div>
                     </div>
@@ -204,12 +252,12 @@ const IpInfoComponent = () => {
                                 id="address"
                                 name="address"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setAddress(e.target.value)}
                                 placeholder="e.g. 21, Palmgrove Lane, Victoria Islands"
                                 type="text"
-                                value={formik.values.address}
+                                value={address}
                             />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleAddressInfo()}>Add</button>
                         </div>
                     </div>
 
@@ -221,7 +269,7 @@ const IpInfoComponent = () => {
                     </div>
 
                     <div className="mt-2 p-2 w-full">
-                        <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12">Review and Submit</button>
+                        <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12" onClick={() => handleReviewFormation()}>Review and Submit</button>
                     </div>
 
                 </div>
