@@ -19,7 +19,6 @@ const FormationInfoComponent = () => {
 
     const [shareCapitalAmount, setShareCapitalAmount] = useState("")
     const [shareCapitalType, setShareCapitalType] = useState("Ordinary Shares")
-
     const [shareCapitalList, setShareCapitalList] = useState([])
 
     const [shareholderFullname, setShareholderFullname] = useState("")
@@ -27,14 +26,17 @@ const FormationInfoComponent = () => {
     const [shareholderPhoneNo, setShareholderPhoneNo] = useState("")
     const [shareholderSharePercentage, setShareholderSharePercentage] = useState("")
     const [shareholderShareCapitalType, setShareholderShareCapitalType] = useState("")
+    const [shareholderList, setShareholderList] = useState([])
 
     const [directorFullname, setDirectorFullname] = useState("")
     const [directorEmail, setDirectorEmail] = useState("")
     const [directorPhoneNo, setDirectorPhoneNo] = useState("")
+    const [directorList, setDirectorList] = useState([])
 
     const [beneficialOwnerFullname, setBeneficialOwnerFullname] = useState("")
     const [beneficialOwnerEmail, setBeneficialOwnerEmail] = useState("")
     const [beneficialOwnerPhoneNo, setBeneficialOwnerPhoneNo] = useState("")
+    const [beneficialOwnerList, setBeneficialOwnerList] = useState([])
     
 
     const handleCountryData = (e) => {
@@ -65,6 +67,38 @@ const FormationInfoComponent = () => {
             shareCapitalList.push(shares)
             console.log(shareCapitalList);
         }
+    }
+
+    const handleShareholderInfo = () => {
+        let shareholderDetails = {
+            "shareholderFullname": shareholderFullname,
+            "shareholderEmail": shareholderEmail,
+            "shareholderPhoneNo": shareholderPhoneNo,
+            "shareholderSharePercentage": shareholderSharePercentage,
+            "shareholderShareCapitalType": shareholderShareCapitalType
+        }
+        shareholderList.push(shareholderDetails)
+        console.log(shareholderList);
+    }
+
+    const handleDirectorInfo = () => {
+        let directorDetails = {
+            "directorFullname": directorFullname,
+            "directorEmail": directorEmail,
+            "directorPhoneNo": directorPhoneNo,
+        }
+        directorList.push(directorDetails)
+        console.log(directorList);
+    }
+
+    const handleBeneficialOwnerInfo = () => {
+        let beneficialOwnerDetails = {
+            "beneficialOwnerFullname": beneficialOwnerFullname,
+            "beneficialOwnerEmail": beneficialOwnerEmail,
+            "beneficialOwnerPhoneNo": beneficialOwnerPhoneNo
+        }
+        beneficialOwnerList.push(beneficialOwnerDetails)
+        console.log(beneficialOwnerList);
     }
 
     const formik = useFormik({
@@ -284,9 +318,9 @@ const FormationInfoComponent = () => {
                                     <option>Ordinary Shares</option>
                                     <option>Preference Shares</option>
                                 </select>
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleShareholderInfo()}>Add</button>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
 
                     <div className="mt-6 p-2 lg:w-10/12" id="directors">
@@ -324,7 +358,7 @@ const FormationInfoComponent = () => {
                                     type="text"
                                     value={directorPhoneNo}
                                 />
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleDirectorInfo()}>Add</button>
                             </div>
                         </div>                        
                     </div>
@@ -364,7 +398,7 @@ const FormationInfoComponent = () => {
                                     type="text"
                                     value={beneficialOwnerPhoneNo}
                                 />
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleBeneficialOwnerInfo()}>Add</button>
                             </div>
                         </div>
                     </div>
