@@ -29,7 +29,7 @@ const IpInfoComponent = () => {
 
     const handleCountryData = (e) => {
         countryList.add(country)
-        console.log(countryList);
+        // console.log(countryList);
     }
 
     const handleIpInfo = () => {
@@ -38,21 +38,21 @@ const IpInfoComponent = () => {
             "ipType": ipType
         }
         ipDescriptionList.push(ipInfo)
-        console.log(ipDescriptionList);
+        // console.log(ipDescriptionList);
     }
 
     const handleIpUseInfo = () => {
         if (ipUse.length > 2) {
             ipUseList.push(ipUse)
         }
-        console.log(ipUseList);
+        // console.log(ipUseList);
     }
 
     const handleIpOwnerInfo = () => {
         if (ipOwner.length > 2) {
             ipOwnerList.push(ipOwner)
         }
-        console.log(ipOwnerList);
+        // console.log(ipOwnerList);
     }
 
     const handleRepresentativeInfo = () => {
@@ -62,18 +62,25 @@ const IpInfoComponent = () => {
             "representativePhoneNo": representativePhoneNo
         }
         representativeInfoList.push(representativeDetails)
-        console.log(representativeInfoList);
+        // console.log(representativeInfoList);
     }
 
     const handleAddressInfo = () => {
         if (address.length > 2) {
-            addressInfoList.push(address)
+            addressInfoList.push(address);
         }
-        console.log(addressInfoList);
     }
 
     const handleReviewFormation = () => {
-        console.log({"details": "Successful"});
+        let reviewBox = {
+            "countryList": countryList,
+            "ipDescriptionList": ipDescriptionList,
+            "ipUseList": ipUseList,
+            "ipOwnerList": ipOwnerList,
+            "representativeInfoList": representativeInfoList,
+            "addressInfoList": addressInfoList
+        }
+        console.log(reviewBox);
     }
 
 
