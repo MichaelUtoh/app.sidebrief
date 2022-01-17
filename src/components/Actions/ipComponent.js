@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import countryData from '../../assets/countries.json'
 
 
 const IpInfoComponent = () => {
+
+    const [country, setCountry] = useState("Nigeria")
+    const [countryList, setCountryList] = useState(new Set())
+
+    const [ipDescription, setIpDescription] = useState("")
+    const [ipType, setIpType] = useState("")
+    const [ipDescriptionList, setIpDescriptionList] = useState([])
+
+
+
+    const handleCountryData = (e) => {
+        countryList.add(country)
+        console.log(countryList);
+    }
+
+    const handleIpInfo = () => {
+        let ipInfo = {
+            "ipDescription": ipDescription,
+            "ipType": ipType
+        }
+        ipDescriptionList.push(ipInfo)
+        console.log(ipDescription);
+        console.log(ipType);
+        console.log(ipDescriptionList);
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -19,8 +44,6 @@ const IpInfoComponent = () => {
         }
     })
 
-    console.log(formik.values);
-    
     return (
         <>
             <div className="flex min-h-screen py-14 lg:px-6">
@@ -48,9 +71,9 @@ const IpInfoComponent = () => {
                                 id="country"
                                 name="country"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setCountry(e.target.value)}
                                 type="text"
-                                value={formik.values.country}
+                                value={country}
                             >
                                 
                                 {countryData.map((country) => {
@@ -58,7 +81,7 @@ const IpInfoComponent = () => {
                                 })}
 
                             </select>
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white">Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleCountryData()}>Add</button>
                         </div>
                     </div>
 
@@ -71,10 +94,10 @@ const IpInfoComponent = () => {
                                 id="ipDescription"
                                 name="ipDescription"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.handleChange}
+                                onChange={(e) => setIpDescription(e.target.value)}
                                 placeholder="IP Description"
                                 type="text"
-                                value={formik.values.ipDescription}
+                                value={ipDescription}
                             />
                             <div className="flex items-center my-1">
                                 <select
@@ -82,16 +105,16 @@ const IpInfoComponent = () => {
                                     id="ipType"
                                     name="ipType"
                                     onBlur={formik.handleBlur}
-                                    onChange={formik.handleChange}
+                                    onChange={(e) => setIpType(e.target.value)}
                                     type="text"
-                                    value={formik.values.ipType}
+                                    value={ipType}
                                 >
                                     <option>Trademark</option>
                                     <option>Patent</option>
                                     <option>Copyright</option>
                                     <option>Industrial Design</option>
                                 </select>
-                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white">Add</button>
+                                <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleIpInfo()}>Add</button>
                             </div>
                         </div>
                     </div>
