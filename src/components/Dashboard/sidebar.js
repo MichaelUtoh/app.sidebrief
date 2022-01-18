@@ -11,7 +11,7 @@ const SidebarComponent = () => {
     }
 
     return (
-        <div className="bg-gray-50 flex flex-col h-screen items-center justify-start py-4 static z-10">
+        <div className="bg-gray-50 flex flex-col h-screen items-center justify-start py-4 static w-3/12 z-10">
 
             <div className="ml-7 p-2 pt-6 w-full">
                 <img alt="" className="responsive" src={require("../../assets/sidebrief.png")} width="96px" />

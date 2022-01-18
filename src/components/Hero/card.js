@@ -12,7 +12,7 @@ const CardComponent = ({ url, image, title, description }) => {
         <Link to={url ? url : "#"} className="p-0">
             <div className="bg-white border-b-8 border-b-cyan-400 card flex flex-col h-60 justify-end m-2 mb-6 relative shadow-sm hover:shadow-xl">
 
-                <img alt="" className="absolute right-0 top-0 opacity-25" src={image} height="120px" width="120px" />
+                <img alt="" className="absolute right-0 top-0 opacity-75" src={image} height="120px" width="120px" />
 
                 <div className="p-4">
                     <p className="font-one font-bold mt-2 text-md"> {title} </p>
@@ -41,7 +41,7 @@ export const CardComponent1 = () => {
                 animate="visible"
                 variants={variants}
             >
-                <img alt="" className="absolute right-0 top-0 opacity-25" src={SVG1} height="120px" width="120px" />
+                <img alt="" className="absolute right-0 top-0 opacity-75" src={SVG1} height="120px" width="120px" />
                 <div className="p-4">
                     <p className="font-one font-bold mt-2 text-md">Formation</p>
                     <p className="font-two mt-2 text-sm text-[#5a5a5a]">Register any type of profit or non-profit entity.</p>
@@ -68,7 +68,7 @@ export const CardComponent2 = () => {
                 animate="visible"
                 variants={variants}
             >
-                <img alt="" className="absolute right-0 top-0 opacity-25" src={SVG2} height="120px" width="120px" />
+                <img alt="" className="absolute right-0 top-0 opacity-75" src={SVG2} height="120px" width="120px" />
                 <div className="p-4">
                     <p className="font-one font-bold mt-2 text-md">IP</p>
                     <p className="font-two mt-2 text-sm text-[#5a5a5a]">Register trademarks, copyrights and patents.</p>
@@ -94,7 +94,7 @@ export const CardComponent3 = () => {
                 animate="visible"
                 variants={variants}
             >
-                <img alt="" className="absolute right-0 top-0 opacity-25" src={SVG3} height="120px" width="120px" />
+                <img alt="" className="absolute right-0 top-0 opacity-75" src={SVG3} height="120px" width="120px" />
                 <div className="p-4">
                     <p className="font-one font-bold mt-2 text-md">Compliance</p>
                     <p className="font-two mt-2 text-sm text-[#5a5a5a]">Get local licenses and permits to do business.</p>
@@ -119,7 +119,7 @@ export const CardComponent4 = () => {
                 animate="visible"
                 variants={variants}
             >
-                <img alt="" className="absolute right-0 top-0 opacity-25" src={SVG4} height="120px" width="120px" />
+                <img alt="" className="absolute right-0 top-0 opacity-75" src={SVG4} height="120px" width="120px" />
                 <div className="p-4">
                     <p className="font-one font-bold mt-2 text-md">Maintenance</p>
                     <p className="font-two mt-2 text-sm text-[#5a5a5a]">Manage your company records and filings.</p>

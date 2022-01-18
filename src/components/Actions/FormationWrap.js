@@ -17,7 +17,7 @@ const FormationWrap = () => {
     return (
         <div className="flex max-h-screen">
             <SidebarComponent />
-            <div className="main overflow-y-scroll w-10/12">
+            <div className="main overflow-y-scroll w-full">
                 <NavbarComponent />
                 <FormationInfoComponent />
             </div>
