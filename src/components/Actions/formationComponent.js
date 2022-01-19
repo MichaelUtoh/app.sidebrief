@@ -143,15 +143,15 @@ const FormationInfoComponent = () => {
 
                 <div className="abstract-sidebar flex flex-col justify-start mr-4 w-3/12">
                     <ul>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#country">Country</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#name">Business Name</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#function">Business Function</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#address">Business Address</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#capital">Share Capital</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#shareholders">Shareholders</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#directors">Directors</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#owners">Beneficial Owners</a> </li>
-                        <li className="hover:bg-gray-50 hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#review">Review & Submit</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#country">Country</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#name">Business Name</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#function">Business Function</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#address">Business Address</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#capital">Share Capital</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#shareholders">Shareholders</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#directors">Directors</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#owners">Beneficial Owners</a> </li>
+                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#review">Review & Submit</a> </li>
                     </ul>
                     
                 </div>

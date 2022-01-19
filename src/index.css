@@ -53,18 +53,16 @@ body {
   font-weight: 500;
 }
 
+.sidebar {
+  width: 250px !important;
+}
+
 @media screen and (max-width: 1300px) {
   .card {
     width: 350px;
   }
-  .link-display {
-    display: none !important;
-  }
   .main {
     width: 100%
-  }
-  .responsive {
-    display: none;
   }
 }
 
@@ -85,8 +83,29 @@ body {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   .form {
     width: 80%;
   }
+  .link-display {
+    display: none !important;
+  }
+  .responsive {
+    display: none;
+  }
+  .sidebar {
+    width: 50px !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* .form {
+    width: 80%;
+  }
+  .link-display {
+    display: none !important;
+  }
+  .responsive {
+    display: none;
+  } */
 }

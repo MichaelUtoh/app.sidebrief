@@ -16,7 +16,7 @@ const DashboardNavComponent = () => {
         <div className="flex">
             <DashboardNavbarComponent />
 
-            <div className="main w-10/12">
+            <div className="main w-full">
                 <NavbarComponent />
                 <HeroComponent />
             </div>
