@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import countryData from '../../assets/countries.json'
+import { BiTrash } from 'react-icons/bi'
+import * as Yup from 'yup'
 
 
 const FormationInfoComponent = () => {
 
     const [country, setCountry] = useState("Nigeria")
-    const [countryList, setCountryList] = (new Set())
+    const [countryList, setCountryList] = useState([])
 
     const [businessName, setBusinessName] = useState("")
     const [businessList, setBusinessList] = useState(new Set())
@@ -40,7 +42,14 @@ const FormationInfoComponent = () => {
     
 
     const handleCountryData = (e) => {
-        console.log(country);
+        if (country.length > 0) {
+            countryList.push(country)
+        }
+        console.log(countryList);
+    }
+
+    const handleDeleteCountry = () => {
+        console.log("Hello");
     }
     
     const handleBusinessData = (e) => {
@@ -109,8 +118,6 @@ const FormationInfoComponent = () => {
         initialValues: {
             country: "Nigeria",
             businessName1: "",
-            businessName2: "",
-            businessName3: "",
             businessFunction1: "",
             businessFunction2: "",
             businessFunction3: "",
@@ -132,7 +139,12 @@ const FormationInfoComponent = () => {
             beneficialOwnerFullname: "",
             beneficialOwnerEmail: "",
             beneficialOwnerPhoneNo: "",
-        }
+        },
+        validationSchema: Yup.object({
+            businessName1: Yup.string()
+            .min(5, "Must be a minimum of 5 characters")
+            .required("Required"),
+        })
     })
 
     // console.log(formik.values);
@@ -141,7 +153,7 @@ const FormationInfoComponent = () => {
         <>
             <div className="flex min-h-screen py-14 lg:px-6">
 
-                <div className="abstract-sidebar flex flex-col justify-start mr-4 w-3/12">
+                {/* <div className="abstract-sidebar flex flex-col justify-start mr-4 w-3/12">
                     <ul>
                         <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#country">Country</a> </li>
                         <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#name">Business Name</a> </li>
@@ -152,18 +164,16 @@ const FormationInfoComponent = () => {
                         <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#directors">Directors</a> </li>
                         <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#owners">Beneficial Owners</a> </li>
                         <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#review">Review & Submit</a> </li>
-                    </ul>
-                    
-                </div>
+                    </ul>       
+                </div> */}
 
-                <div className="flex flex-col justify-start min-h-full px-2 lg:w-9/12 md:w-full">
-
-                    <div className="p-2 lg:w-10/12" id="country">
+                <div className="flex flex-col justify-start min-h-full px-2 lg:w-7/12 md:w-full">
+                    <div className="p-2 lg:w-full p-4 shadow-md" id="country">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Country</p>
                         <p className="font-two text-sm text-[#757575] mt-2">Where would you like to register your new entity?</p>
                         <div className="flex items-center pt-2">
                             <select
-                                className="bg-gray-100 h-10 mr-1 outline-none p-2 w-full"
+                                className="bg-gray-50 h-10 mr-1 outline-none p-2 w-full"
                                 id="country"
                                 name="country"
                                 onBlur={formik.handleBlur}
@@ -179,12 +189,12 @@ const FormationInfoComponent = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="name">
+                    <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="name">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Business Name</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">What is the name of your new entity, provide at least two (2) names?</p>
                         <div className="flex items-center pt-2">
                             <input
-                                className="bg-gray-100 mr-1 outline-none p-2 w-full"
+                                className="bg-gray-50 mr-1 outline-none p-2 w-full"
                                 id="businessName1"
                                 name="businessName1"
                                 onBlur={formik.handleBlur}
@@ -195,14 +205,15 @@ const FormationInfoComponent = () => {
                             />
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessData()}>Add</button>
                         </div>
+                        {formik.touched.businessName1 && formik.errors.businessName1 ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.businessName1}</p> : null}
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="function">
+                    <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="function">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Business Function</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">What does your business do, list as many as you can?</p>
                         <div className="flex items-center pt-2">
                             <input
-                                className="bg-gray-100 mr-1 outline-none p-2 w-full"
+                                className="bg-gray-50 mr-1 outline-none p-2 w-full"
                                 id="businessFunction1"
                                 name="businessFunction1"
                                 onBlur={formik.handleBlur}
@@ -215,12 +226,12 @@ const FormationInfoComponent = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="address">
+                    <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="address">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Business Address</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">If you have a local registered address for your company, please provide below?</p>
                         <div className="flex items-center pt-2">
                             <input
-                                className="bg-gray-100 mr-1 outline-none p-2 w-full"
+                                className="bg-gray-50 mr-1 outline-none p-2 w-full"
                                 id="businessAddress"
                                 name="businessAddress"
                                 onBlur={formik.handleBlur}
@@ -233,12 +244,12 @@ const FormationInfoComponent = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="capital">
+                    <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="capital">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Share Capital</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">What number of shares will your company have as share capital?</p>
                         <div className="pt-2">
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareCapitalAmount"
                                 name="shareCapitalAmount"
                                 onBlur={formik.handleBlur}
@@ -249,7 +260,7 @@ const FormationInfoComponent = () => {
                             />
                             <div className="flex items-center my-1">
                                 <select
-                                    className="bg-gray-100 h-10 outline-none p-2 text-[#141414] text-sm w-full"
+                                    className="bg-gray-50 h-10 outline-none p-2 text-[#141414] text-sm w-full"
                                     id="shareCapitalType"
                                     name="shareCapitalType"
                                     onBlur={formik.handleBlur}
@@ -265,12 +276,12 @@ const FormationInfoComponent = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="shareholders">
+                    <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="shareholders">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Shareholders</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who are the shareholders or the owners of your company?</p>
                         <div className="flex flex-col items-start pt-2">
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareholderFullname"
                                 name="shareholderFullname"
                                 onBlur={formik.handleBlur}
@@ -280,7 +291,7 @@ const FormationInfoComponent = () => {
                                 value={shareholderFullname}
                             />
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareholderEmail"
                                 name="shareholderEmail"
                                 onBlur={formik.handleBlur}
@@ -290,7 +301,7 @@ const FormationInfoComponent = () => {
                                 value={shareholderEmail}
                             />
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareholderPhoneNo"
                                 name="shareholderPhoneNo"
                                 onBlur={formik.handleBlur}
@@ -300,7 +311,7 @@ const FormationInfoComponent = () => {
                                 value={shareholderPhoneNo}
                             />
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareholderSharePercentage"
                                 name="shareholderSharePercentage"
                                 onBlur={formik.handleBlur}
@@ -311,7 +322,7 @@ const FormationInfoComponent = () => {
                             />
                             <div className="flex items-center my-1 w-full">
                                 <select
-                                    className="bg-gray-100 grow h-10 outline-none p-2 text-[#141414] text-sm"
+                                    className="bg-gray-50 grow h-10 outline-none p-2 text-[#141414] text-sm"
                                     id="shareholderShareCapitalType"
                                     name="shareholderShareCapitalType"
                                     onBlur={formik.handleBlur}
@@ -327,12 +338,12 @@ const FormationInfoComponent = () => {
                         </div>
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="directors">
+                    <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="directors">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Directors</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who are the directors that will manage the affairs of your company?</p>
                         <div className="flex flex-col items-start pt-2">
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="directorFullname"
                                 name="directorFullname"
                                 onBlur={formik.handleBlur}
@@ -342,7 +353,7 @@ const FormationInfoComponent = () => {
                                 value={directorFullname}
                             />
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="directorEmail"
                                 name="directorEmail"
                                 onBlur={formik.handleBlur}
@@ -353,7 +364,7 @@ const FormationInfoComponent = () => {
                             />
                             <div className="flex items-center w-full">
                                 <input
-                                    className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                    className="bg-gray-50 my-1 outline-none p-2 w-full"
                                     id="directorPhoneNo"
                                     name="directorPhoneNo"
                                     onBlur={formik.handleBlur}
@@ -367,12 +378,12 @@ const FormationInfoComponent = () => {
                         </div>                        
                     </div>
 
-                    <div className="mt-6 p-2 lg:w-10/12" id="owners">
+                    <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="owners">
                         <p className="flex font-one flex-col font-bold text-xl" id="country">Beneficial Owners</p>
                         <p className="font-two mt-2 text-sm text-[#5a5a5a]">Who are the ultimate beneficial owners of your company, if any?</p>
                         <div className="flex flex-col items-start pt-2">
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="beneficialOwnerFullname"
                                 name="beneficialOwnerFullname"
                                 onBlur={formik.handleBlur}
@@ -382,7 +393,7 @@ const FormationInfoComponent = () => {
                                 value={beneficialOwnerFullname}
                             />
                             <input
-                                className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="beneficialOwnerEmail"
                                 name="beneficialOwnerEmail"
                                 onBlur={formik.handleBlur}
@@ -393,7 +404,7 @@ const FormationInfoComponent = () => {
                             />
                             <div className="flex items-center w-full">
                                 <input
-                                    className="bg-gray-100 my-1 outline-none p-2 w-full"
+                                    className="bg-gray-50 my-1 outline-none p-2 w-full"
                                     id="beneficialOwnerPhoneNo"
                                     name="beneficialOwnerPhoneNo"
                                     onBlur={formik.handleBlur}
@@ -417,6 +428,17 @@ const FormationInfoComponent = () => {
                     <div className="mt-2 p-2 w-full">
                         <button className="bg-cyan-600 hover:bg-cyan-500 mt-4 p-2 rounded-sm text-white w-6/12">Review and Submit</button>
                     </div>
+
+                </div>
+
+                <div className="abstract-sidebar flex flex-col grow justify-start ml-2 p-2 px-4 shadow-lg w-5/12">
+                    <p className="flex font-one flex-col font-bold text-xl">Country Data</p>
+                    <ul>
+                        {countryList && countryList.map(country => 
+                            <li className="flex items-center" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>    
+                        )}
+                    </ul>
+                    {country}
 
                 </div>
 
