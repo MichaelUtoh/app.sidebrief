@@ -432,7 +432,7 @@ const FormationInfoComponent = () => {
                 </div>
 
                 <div className="abstract-sidebar flex flex-col grow justify-start ml-2 p-2 px-4 shadow-lg w-5/12">
-                    <p className="flex font-one flex-col font-bold text-xl">Country Data</p>
+                    <p className="flex font-one font-bold items-center text-xl">Country <span className="font-thin"> (User submitted data)</span></p>
                     <ul>
                         {countryList && countryList.map(country => 
                             <li className="flex items-center" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>    
