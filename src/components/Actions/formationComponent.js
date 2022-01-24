@@ -53,25 +53,25 @@ const FormationInfoComponent = () => {
     
     const handleBusinessData = (e) => {
         if (formik.values.businessName.length > 0) {
-            businessList.add(businessName);
+            businessList.add(formik.values.businessName);
         };
     }
 
     const handleBusinessFunction = (e) => {
         if (formik.values.businessFunction.length > 0) {
-            businessFunctionList.add(businessFunction);
+            businessFunctionList.add(formik.values.businessFunction);
         }
     }
 
     const handleBusinessAddress = () => {
         if (formik.values.businessAddress.length > 0) {
-            businessAddressList.add(businessAddress);
+            businessAddressList.add(formik.values.businessAddress);
         }
     }
 
     const handleShareCapitalDetail = () => {
         if (formik.values.shareCapitalAmount.length > 0) {
-            let shares = shareCapitalAmount + ", " + shareCapitalType
+            let shares = formik.values.shareCapitalAmount + ", " + formik.values.shareCapitalType
             shareCapitalList.push(shares)
             console.log(shareCapitalList);
         }
@@ -456,7 +456,6 @@ const FormationInfoComponent = () => {
                     <p className="flex font-one font-medium items-center text-md">Business Name <span className="font-thin">&nbsp;(User submitted data)</span></p>
                     <ul className="bg-gray-100">
                         {businessList}
-                        {businessName}
                     </ul>
                 </div>
 
