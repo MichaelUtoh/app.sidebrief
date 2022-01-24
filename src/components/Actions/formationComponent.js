@@ -7,7 +7,6 @@ import * as Yup from 'yup'
 
 const FormationInfoComponent = () => {
 
-    const [country, setCountry] = useState("Nigeria")
     const [countryList, setCountryList] = useState([])
 
     const [businessName, setBusinessName] = useState("")
@@ -42,8 +41,8 @@ const FormationInfoComponent = () => {
     
 
     const handleCountryData = (e) => {
-        if (country.length > 0) {
-            countryList.push(country)
+        if (formik.values.country.length > 0) {
+            countryList.push(formik.values.country)
         }
         console.log(countryList);
     }
@@ -53,25 +52,25 @@ const FormationInfoComponent = () => {
     }
     
     const handleBusinessData = (e) => {
-        if (businessName.length > 0) {
+        if (formik.values.businessName.length > 0) {
             businessList.add(businessName);
         };
     }
 
     const handleBusinessFunction = (e) => {
-        if (businessFunction.length > 0) {
+        if (formik.values.businessFunction.length > 0) {
             businessFunctionList.add(businessFunction);
         }
     }
 
     const handleBusinessAddress = () => {
-        if (businessAddress.length > 0) {
+        if (formik.values.businessAddress.length > 0) {
             businessAddressList.add(businessAddress);
         }
     }
 
     const handleShareCapitalDetail = () => {
-        if (shareCapitalAmount.length > 0) {
+        if (formik.values.shareCapitalAmount.length > 0) {
             let shares = shareCapitalAmount + ", " + shareCapitalType
             shareCapitalList.push(shares)
             console.log(shareCapitalList);
@@ -80,11 +79,11 @@ const FormationInfoComponent = () => {
 
     const handleShareholderInfo = () => {
         let shareholderDetails = {
-            "shareholderFullname": shareholderFullname,
-            "shareholderEmail": shareholderEmail,
-            "shareholderPhoneNo": shareholderPhoneNo,
-            "shareholderSharePercentage": shareholderSharePercentage,
-            "shareholderShareCapitalType": shareholderShareCapitalType
+            "shareholderFullname": formik.values.shareholderFullname,
+            "shareholderEmail": formik.values.shareholderEmail,
+            "shareholderPhoneNo": formik.values.shareholderPhoneNo,
+            "shareholderSharePercentage": formik.values.shareholderSharePercentage,
+            "shareholderShareCapitalType": formik.values.shareholderShareCapitalType
         }
         shareholderList.push(shareholderDetails)
         console.log(shareholderList);
@@ -92,9 +91,9 @@ const FormationInfoComponent = () => {
 
     const handleDirectorInfo = () => {
         let directorDetails = {
-            "directorFullname": directorFullname,
-            "directorEmail": directorEmail,
-            "directorPhoneNo": directorPhoneNo,
+            "directorFullname": formik.values.directorFullname,
+            "directorEmail": formik.values.directorEmail,
+            "directorPhoneNo": formik.values.directorPhoneNo,
         }
         directorList.push(directorDetails)
         console.log(directorList);
@@ -102,9 +101,9 @@ const FormationInfoComponent = () => {
 
     const handleBeneficialOwnerInfo = () => {
         let beneficialOwnerDetails = {
-            "beneficialOwnerFullname": beneficialOwnerFullname,
-            "beneficialOwnerEmail": beneficialOwnerEmail,
-            "beneficialOwnerPhoneNo": beneficialOwnerPhoneNo
+            "beneficialOwnerFullname": formik.values.beneficialOwnerFullname,
+            "beneficialOwnerEmail": formik.values.beneficialOwnerEmail,
+            "beneficialOwnerPhoneNo": formik.values.beneficialOwnerPhoneNo
         }
         beneficialOwnerList.push(beneficialOwnerDetails)
         console.log(beneficialOwnerList);
@@ -117,10 +116,8 @@ const FormationInfoComponent = () => {
     const formik = useFormik({
         initialValues: {
             country: "Nigeria",
-            businessName1: "",
-            businessFunction1: "",
-            businessFunction2: "",
-            businessFunction3: "",
+            businessName: "",
+            businessFunction: "",
             businessAddress: "",
 
             shareCapitalAmount: "",
@@ -141,9 +138,23 @@ const FormationInfoComponent = () => {
             beneficialOwnerPhoneNo: "",
         },
         validationSchema: Yup.object({
-            businessName1: Yup.string()
-            .min(5, "Must be a minimum of 5 characters")
-            .required("Required"),
+            country: Yup.string().max(150, "Maximum of 150 characters allowed").required("Required"),
+            businessName: Yup.string().max(150, "Max of 150 characters allowed").required("Required"),
+            businessFunction: Yup.string().required("Required"),
+            businessAddress: Yup.string().required("Required"),
+            shareCapitalAmount: Yup.string().required("Required"),
+            shareCapitalType: Yup.string().required("Required"),
+            shareholderFullname: Yup.string().required("Required"),
+            shareholderEmail: Yup.string().required("Required"),
+            shareholderPhoneNo: Yup.string().required("Required"),
+            shareholderSharePercentage: Yup.string().required("Required"),
+            shareholderShareCapitalType: Yup.string().required("Required"),
+            directorFullname: Yup.string().required("Required"),
+            directorEmail: Yup.string().required("Required"),
+            directorPhoneNo: Yup.string().required("Required"),
+            beneficialOwnerFullname: Yup.string().required("Required"),
+            beneficialOwnerEmail: Yup.string().required("Required"),
+            beneficialOwnerPhoneNo: Yup.string().required("Required"),
         })
     })
 
@@ -152,20 +163,6 @@ const FormationInfoComponent = () => {
     return (
         <>
             <div className="flex min-h-screen py-14 lg:px-6">
-
-                {/* <div className="abstract-sidebar flex flex-col justify-start mr-4 w-3/12">
-                    <ul>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#country">Country</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#name">Business Name</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#function">Business Function</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#address">Business Address</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#capital">Share Capital</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#shareholders">Shareholders</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#directors">Directors</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#owners">Beneficial Owners</a> </li>
-                        <li className="hover:bg-[#fbfbfc] hover:font-medium my-1 p-2 text-[#5a5a5a]"> <a href="#review">Review & Submit</a> </li>
-                    </ul>       
-                </div> */}
 
                 <div className="flex flex-col justify-start min-h-full px-2 lg:w-7/12 md:w-full">
                     <div className="p-2 lg:w-full p-4 shadow-md" id="country">
@@ -177,9 +174,9 @@ const FormationInfoComponent = () => {
                                 id="country"
                                 name="country"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setCountry(e.target.value)}
+                                onChange={formik.handleChange}
                                 type="text"
-                                value={country}
+                                value={formik.values.country}
                             >
                                 {countryData.map((country) => {
                                     return <option className="text-[#5a5a5a]" key={country.code}>{country.name}</option>;
@@ -187,6 +184,7 @@ const FormationInfoComponent = () => {
                             </select>
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleCountryData()}>Add</button>
                         </div>
+                        {formik.touched.country && formik.errors.country ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.country}</p> : null}
                     </div>
 
                     <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="name">
@@ -195,17 +193,17 @@ const FormationInfoComponent = () => {
                         <div className="flex items-center pt-2">
                             <input
                                 className="bg-gray-50 mr-1 outline-none p-2 w-full"
-                                id="businessName1"
-                                name="businessName1"
+                                id="businessName"
+                                name="businessName"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setBusinessName(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="e.g. Web3.0 Limited"
                                 type="text"
-                                value={businessName}
+                                value={formik.values.businessName}
                             />
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessData()}>Add</button>
                         </div>
-                        {formik.touched.businessName1 && formik.errors.businessName1 ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.businessName1}</p> : null}
+                        {formik.touched.businessName && formik.errors.businessName ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.businessName}</p> : null}
                     </div>
 
                     <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="function">
@@ -214,16 +212,17 @@ const FormationInfoComponent = () => {
                         <div className="flex items-center pt-2">
                             <input
                                 className="bg-gray-50 mr-1 outline-none p-2 w-full"
-                                id="businessFunction1"
-                                name="businessFunction1"
+                                id="businessFunction"
+                                name="businessFunction"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setBusinessFunction(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="e.g. Software Development"
                                 type="text"
-                                value={businessFunction}
+                                value={formik.values.businessFunction}
                             />
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessFunction()}>Add</button>
                         </div>
+                        {formik.touched.businessFunction && formik.errors.businessFunction ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.businessFunction}</p> : null}
                     </div>
 
                     <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="address">
@@ -235,13 +234,14 @@ const FormationInfoComponent = () => {
                                 id="businessAddress"
                                 name="businessAddress"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setBusinessAddress(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="21, Admiralty way, Lekki, Lagos"
                                 type="text"
-                                value={businessAddress}
+                                value={formik.values.businessAddress}
                             />
                             <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessAddress()}>Add</button>
                         </div>
+                        {formik.touched.businessAddress && formik.errors.businessAddress ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.businessAddress}</p> : null}
                     </div>
 
                     <div className="mt-6 p-2 lg:w-full p-4 shadow-md" id="capital">
@@ -253,26 +253,28 @@ const FormationInfoComponent = () => {
                                 id="shareCapitalAmount"
                                 name="shareCapitalAmount"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setShareCapitalAmount(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="e.g. 1,000,000"
                                 type="text"
-                                value={shareCapitalAmount}
+                                value={formik.values.shareCapitalAmount}
                             />
+                            {formik.touched.shareCapitalAmount && formik.errors.shareCapitalAmount ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.shareCapitalAmount}</p> : null}
                             <div className="flex items-center my-1">
                                 <select
                                     className="bg-gray-50 h-10 outline-none p-2 text-[#141414] text-sm w-full"
                                     id="shareCapitalType"
                                     name="shareCapitalType"
                                     onBlur={formik.handleBlur}
-                                    onChange={(e) => setShareCapitalType(e.target.value)}
+                                    onChange={formik.handleChange}
                                     type="select"
-                                    value={shareCapitalType}
+                                    value={formik.values.shareCapitalType}
                                 >
                                     <option>Ordinary Shares</option>
                                     <option>Preference Shares</option>
                                 </select>
                                 <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleShareCapitalDetail()}>Add</button>
                             </div>
+                            {formik.touched.shareCapitalType && formik.errors.shareCapitalType ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.shareCapitalType}</p> : null}
                         </div>
                     </div>
 
@@ -285,40 +287,43 @@ const FormationInfoComponent = () => {
                                 id="shareholderFullname"
                                 name="shareholderFullname"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setShareholderFullname(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="Fullname"
                                 type="text"
-                                value={shareholderFullname}
+                                value={formik.values.shareholderFullname}
                             />
+                            {formik.touched.shareholderFullname && formik.errors.shareholderFullname ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.shareholderFullname}</p> : null}
                             <input
                                 className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareholderEmail"
                                 name="shareholderEmail"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setShareholderEmail(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="Email"
                                 type="text"
-                                value={shareholderEmail}
+                                value={formik.values.shareholderEmail}
                             />
+                            {formik.touched.shareholderEmail && formik.errors.shareholderEmail ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.shareholderEmail}</p> : null}
                             <input
                                 className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareholderPhoneNo"
                                 name="shareholderPhoneNo"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setShareholderPhoneNo(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="e.g. 080xxxxxxx2"
                                 type="text"
-                                value={shareholderPhoneNo}
+                                value={formik.values.shareholderPhoneNo}
                             />
+                            {formik.touched.shareholderPhoneNo && formik.errors.shareholderPhoneNo ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.shareholderPhoneNo}</p> : null}
                             <input
                                 className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="shareholderSharePercentage"
                                 name="shareholderSharePercentage"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setShareholderSharePercentage(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="Percentage of Shares"
                                 type="text"
-                                value={shareholderSharePercentage}
+                                value={formik.values.shareholderSharePercentage}
                             />
                             <div className="flex items-center my-1 w-full">
                                 <select
@@ -326,15 +331,16 @@ const FormationInfoComponent = () => {
                                     id="shareholderShareCapitalType"
                                     name="shareholderShareCapitalType"
                                     onBlur={formik.handleBlur}
-                                    onChange={(e) => setShareholderShareCapitalType(e.target.value)}
+                                    onChange={formik.handleChange}
                                     type="text"
-                                    value={shareholderShareCapitalType}
+                                    value={formik.values.shareholderShareCapitalType}
                                 >
                                     <option>Ordinary Shares</option>
                                     <option>Preference Shares</option>
                                 </select>
                                 <button className="bg-cyan-600 hover:bg-cyan-500 font-two ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleShareholderInfo()}>Add</button>
                             </div>
+                            {formik.touched.shareholderShareCapitalType && formik.errors.shareholderShareCapitalType ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.shareholderShareCapitalType}</p> : null}
                         </div>
                     </div>
 
@@ -347,34 +353,37 @@ const FormationInfoComponent = () => {
                                 id="directorFullname"
                                 name="directorFullname"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setDirectorFullname(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="Fullname"
                                 type="text"
-                                value={directorFullname}
+                                value={formik.values.directorFullname}
                             />
+                            {formik.touched.directorFullname && formik.errors.directorFullname ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.directorFullname}</p> : null}
                             <input
                                 className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="directorEmail"
                                 name="directorEmail"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setDirectorEmail(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="Email"
                                 type="text"
-                                value={directorEmail}
+                                value={formik.values.directorEmail}
                             />
+                            {formik.touched.directorEmail && formik.errors.directorEmail ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.directorEmail}</p> : null}
                             <div className="flex items-center w-full">
                                 <input
                                     className="bg-gray-50 my-1 outline-none p-2 w-full"
                                     id="directorPhoneNo"
                                     name="directorPhoneNo"
                                     onBlur={formik.handleBlur}
-                                    onChange={(e) => setDirectorPhoneNo(e.target.value)}
+                                    onChange={formik.handleChange}
                                     placeholder="e.g. 080xxxxxxx2"
                                     type="text"
-                                    value={directorPhoneNo}
+                                    value={formik.values.directorPhoneNo}
                                 />
                                 <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleDirectorInfo()}>Add</button>
                             </div>
+                            {formik.touched.directorPhoneNo && formik.errors.directorPhoneNo ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.directorPhoneNo}</p> : null}
                         </div>                        
                     </div>
 
@@ -387,34 +396,37 @@ const FormationInfoComponent = () => {
                                 id="beneficialOwnerFullname"
                                 name="beneficialOwnerFullname"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setBeneficialOwnerFullname(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="Fullname"
                                 type="text"
-                                value={beneficialOwnerFullname}
+                                value={formik.values.beneficialOwnerFullname}
                             />
+                            {formik.touched.beneficialOwnerFullname && formik.errors.beneficialOwnerFullname ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.beneficialOwnerFullname}</p> : null}
                             <input
                                 className="bg-gray-50 my-1 outline-none p-2 w-full"
                                 id="beneficialOwnerEmail"
                                 name="beneficialOwnerEmail"
                                 onBlur={formik.handleBlur}
-                                onChange={(e) => setBeneficialOwnerEmail(e.target.value)}
+                                onChange={formik.handleChange}
                                 placeholder="Email"
                                 type="text"
-                                value={beneficialOwnerEmail}
+                                value={formik.values.beneficialOwnerEmail}
                             />
+                            {formik.touched.beneficialOwnerEmail && formik.errors.beneficialOwnerEmail ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.beneficialOwnerEmail}</p> : null}
                             <div className="flex items-center w-full">
                                 <input
                                     className="bg-gray-50 my-1 outline-none p-2 w-full"
                                     id="beneficialOwnerPhoneNo"
                                     name="beneficialOwnerPhoneNo"
                                     onBlur={formik.handleBlur}
-                                    onChange={(e) => setBeneficialOwnerPhoneNo(e.target.value)}
+                                    onChange={formik.handleChange}
                                     placeholder="e.g. 080xxxxxxx2"
                                     type="text"
-                                    value={beneficialOwnerPhoneNo}
+                                    value={formik.values.beneficialOwnerPhoneNo}
                                 />
                                 <button className="bg-cyan-600 hover:bg-cyan-500 font-two h-10 ml-1 p-2 px-6 rounded-sm text-white" onClick={() => handleBeneficialOwnerInfo()}>Add</button>
                             </div>
+                            {formik.touched.beneficialOwnerPhoneNo && formik.errors.beneficialOwnerPhoneNo ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.beneficialOwnerPhoneNo}</p> : null}
                         </div>
                     </div>
 
@@ -431,15 +443,21 @@ const FormationInfoComponent = () => {
 
                 </div>
 
-                <div className="abstract-sidebar flex flex-col grow justify-start ml-2 p-2 px-4 shadow-lg w-5/12">
-                    <p className="flex font-one font-bold items-center text-xl">Country <span className="font-thin"> (User submitted data)</span></p>
-                    <ul>
-                        {countryList && countryList.map(country => 
-                            <li className="flex items-center" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>    
-                        )}
-                    </ul>
-                    {country}
+                <div className="abstract-sidebar flex flex-col grow h-[500px] justify-start ml-2 p-2 px-4 shadow-lg w-5/12 overflow-y-scroll">
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Country <span className="font-thin">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {countryList && countryList.map(country => 
+                                <li className="flex font-thin items-center justify-between p-2" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>    
+                            )}
+                        </ul>
+                    </div>
 
+                    <p className="flex font-one font-medium items-center text-md">Business Name <span className="font-thin">&nbsp;(User submitted data)</span></p>
+                    <ul className="bg-gray-100">
+                        {businessList}
+                        {businessName}
+                    </ul>
                 </div>
 
             </div>

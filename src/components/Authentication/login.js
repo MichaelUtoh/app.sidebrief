@@ -32,7 +32,7 @@ const LoginComponent = () => {
         },
         validationSchema: Yup.object({
             username: Yup.string()
-            .max(15, "Must be 15 characters or less")
+            .max(50, "Must be 50 characters or less")
             .required("Required"),
             password: Yup.string()
             .max(30, "Must be 30 characters or less")
