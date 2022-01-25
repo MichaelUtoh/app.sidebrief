@@ -8,14 +8,8 @@ import * as Yup from 'yup'
 const FormationInfoComponent = () => {
 
     const [countryList, setCountryList] = useState([])
-
-    const [businessName, setBusinessName] = useState("")
-    const [businessList, setBusinessList] = useState(new Set())
-
-    const [businessFunction, setBusinessFunction] = useState("")
-    const [businessFunctionList, setBusinessFunctionList] = useState(new Set())
-    
-    const [businessAddress, setBusinessAddress] = useState("")
+    const [businessNameList, setBusinessNameList] = useState([])
+    const [businessFunctionList, setBusinessFunctionList] = useState([])    
     const [businessAddressList, setBusinessAddressList] = useState(new Set())
 
     const [shareCapitalAmount, setShareCapitalAmount] = useState("")
@@ -41,26 +35,26 @@ const FormationInfoComponent = () => {
     
 
     const handleCountryData = (e) => {
-        if (formik.values.country.length > 0) {
-            countryList.push(formik.values.country)
+        if (formik.values.country.length > 0 && !countryList.includes(formik.values.country)) {
+            setCountryList([...countryList, formik.values.country])
         }
-        console.log(countryList);
     }
 
     const handleDeleteCountry = () => {
         console.log("Hello");
     }
     
-    const handleBusinessData = (e) => {
-        if (formik.values.businessName.length > 0) {
-            businessList.add(formik.values.businessName);
+    const handleBusinessNameData = (e) => {
+        if (formik.values.businessName.length > 0 && !businessNameList.includes(formik.values.businessName)) {
+            setBusinessNameList([...businessNameList, formik.values.businessName]);
         };
     }
 
     const handleBusinessFunction = (e) => {
-        if (formik.values.businessFunction.length > 0) {
-            businessFunctionList.add(formik.values.businessFunction);
+        if (formik.values.businessFunction.length > 0 && !businessFunctionList.includes(formik.values.businessFunction)) {
+            setBusinessFunctionList([...businessFunctionList, formik.values.businessFunction]);
         }
+        console.log(businessFunctionList);
     }
 
     const handleBusinessAddress = () => {
@@ -201,7 +195,7 @@ const FormationInfoComponent = () => {
                                 type="text"
                                 value={formik.values.businessName}
                             />
-                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessData()}>Add</button>
+                            <button className="bg-cyan-600 hover:bg-cyan-500 font-two p-2 px-6 rounded-sm text-white" onClick={() => handleBusinessNameData()}>Add</button>
                         </div>
                         {formik.touched.businessName && formik.errors.businessName ? <p className="text-red-500 text-xs text-left w-full">{formik.errors.businessName}</p> : null}
                     </div>
@@ -445,17 +439,26 @@ const FormationInfoComponent = () => {
 
                 <div className="abstract-sidebar flex flex-col grow h-[500px] justify-start ml-2 p-2 px-4 shadow-lg w-5/12 overflow-y-scroll">
                     <div className="mb-5">
-                        <p className="flex font-one font-medium items-center text-md">Country <span className="font-thin">&nbsp;(User submitted data)</span></p>
+                        <p className="flex font-one font-medium items-center text-md">Country <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
                         <ul className="bg-gray-100">
                             {countryList && countryList.map(country => 
-                                <li className="flex font-thin items-center justify-between p-2" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>    
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
                             )}
                         </ul>
                     </div>
 
-                    <p className="flex font-one font-medium items-center text-md">Business Name <span className="font-thin">&nbsp;(User submitted data)</span></p>
+                    <p className="flex font-one font-medium items-center text-md">Business Name <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
                     <ul className="bg-gray-100">
-                        {businessList}
+                        {businessNameList && businessNameList.map(businessName => 
+                            <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessName}> {businessName} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
+                        )}
+                    </ul>
+
+                    <p className="flex font-one font-medium items-center text-md">Business Function <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                    <ul className="bg-gray-100">
+                        {businessFunctionList && businessFunctionList.map(businessFunction => 
+                            <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessFunction}> {businessFunction} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
+                        )}
                     </ul>
                 </div>
 
