@@ -10,27 +10,10 @@ const FormationInfoComponent = () => {
     const [countryList, setCountryList] = useState([])
     const [businessNameList, setBusinessNameList] = useState([])
     const [businessFunctionList, setBusinessFunctionList] = useState([])    
-    const [businessAddressList, setBusinessAddressList] = useState(new Set())
-
-    const [shareCapitalAmount, setShareCapitalAmount] = useState("")
-    const [shareCapitalType, setShareCapitalType] = useState("Ordinary Shares")
+    const [businessAddressList, setBusinessAddressList] = useState([])
     const [shareCapitalList, setShareCapitalList] = useState([])
-
-    const [shareholderFullname, setShareholderFullname] = useState("")
-    const [shareholderEmail, setShareholderEmail] = useState("")
-    const [shareholderPhoneNo, setShareholderPhoneNo] = useState("")
-    const [shareholderSharePercentage, setShareholderSharePercentage] = useState("")
-    const [shareholderShareCapitalType, setShareholderShareCapitalType] = useState("")
     const [shareholderList, setShareholderList] = useState([])
-
-    const [directorFullname, setDirectorFullname] = useState("")
-    const [directorEmail, setDirectorEmail] = useState("")
-    const [directorPhoneNo, setDirectorPhoneNo] = useState("")
     const [directorList, setDirectorList] = useState([])
-
-    const [beneficialOwnerFullname, setBeneficialOwnerFullname] = useState("")
-    const [beneficialOwnerEmail, setBeneficialOwnerEmail] = useState("")
-    const [beneficialOwnerPhoneNo, setBeneficialOwnerPhoneNo] = useState("")
     const [beneficialOwnerList, setBeneficialOwnerList] = useState([])
     
 
@@ -58,16 +41,15 @@ const FormationInfoComponent = () => {
     }
 
     const handleBusinessAddress = () => {
-        if (formik.values.businessAddress.length > 0) {
-            businessAddressList.add(formik.values.businessAddress);
+        if (formik.values.businessAddress.length > 0 && !businessAddressList.includes(formik.values.businessAddress)) {
+            setBusinessAddressList([...businessAddressList, formik.values.businessAddress]);
         }
     }
 
     const handleShareCapitalDetail = () => {
         if (formik.values.shareCapitalAmount.length > 0) {
             let shares = formik.values.shareCapitalAmount + ", " + formik.values.shareCapitalType
-            shareCapitalList.push(shares)
-            console.log(shareCapitalList);
+            setShareCapitalList([...shareCapitalList, shares])
         }
     }
 
@@ -79,7 +61,7 @@ const FormationInfoComponent = () => {
             "shareholderSharePercentage": formik.values.shareholderSharePercentage,
             "shareholderShareCapitalType": formik.values.shareholderShareCapitalType
         }
-        shareholderList.push(shareholderDetails)
+        setShareholderList([...shareholderList, shareholderDetails])
         console.log(shareholderList);
     }
 
@@ -89,7 +71,7 @@ const FormationInfoComponent = () => {
             "directorEmail": formik.values.directorEmail,
             "directorPhoneNo": formik.values.directorPhoneNo,
         }
-        directorList.push(directorDetails)
+        setDirectorList([...directorList, directorDetails])
         console.log(directorList);
     }
 
@@ -99,7 +81,7 @@ const FormationInfoComponent = () => {
             "beneficialOwnerEmail": formik.values.beneficialOwnerEmail,
             "beneficialOwnerPhoneNo": formik.values.beneficialOwnerPhoneNo
         }
-        beneficialOwnerList.push(beneficialOwnerDetails)
+        setBeneficialOwnerList([...beneficialOwnerList, beneficialOwnerDetails])
         console.log(beneficialOwnerList);
     }
 
