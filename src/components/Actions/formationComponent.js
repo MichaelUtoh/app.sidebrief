@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 
 const FormationInfoComponent = () => {
 
+    // State Variables, subject to change from user input
     const [countryList, setCountryList] = useState([])
     const [businessNameList, setBusinessNameList] = useState([])
     const [businessFunctionList, setBusinessFunctionList] = useState([])    
@@ -17,16 +18,13 @@ const FormationInfoComponent = () => {
     const [beneficialOwnerList, setBeneficialOwnerList] = useState([])
     
 
+    // State Change Handler Functions
     const handleCountryData = (e) => {
         if (formik.values.country.length > 0 && !countryList.includes(formik.values.country)) {
             setCountryList([...countryList, formik.values.country])
         }
     }
 
-    const handleDeleteCountry = () => {
-        console.log("Hello");
-    }
-    
     const handleBusinessNameData = (e) => {
         if (formik.values.businessName.length > 0 && !businessNameList.includes(formik.values.businessName)) {
             setBusinessNameList([...businessNameList, formik.values.businessName]);
@@ -85,10 +83,22 @@ const FormationInfoComponent = () => {
         console.log(beneficialOwnerList);
     }
 
+    // Review function
+    const handleDeleteCountry = () => {
+        console.log("Delete country");
+    }
+    
     const handlleReview = () => {
         
     }
 
+    // Delete Items Handler
+    const handleDeleteItem = () => {
+        console.log("Delete");
+    }
+
+
+    // Validation Handler
     const formik = useFormik({
         initialValues: {
             country: "Nigeria",
@@ -421,7 +431,7 @@ const FormationInfoComponent = () => {
 
                 <div className="abstract-sidebar flex flex-col grow h-[500px] justify-start ml-2 p-2 px-4 shadow-lg w-5/12 overflow-y-scroll">
                     <div className="mb-5">
-                        <p className="flex font-one font-medium items-center text-md">Country <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <p className="flex font-one font-medium items-center text-md">Country(ies) <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
                         <ul className="bg-gray-100">
                             {countryList && countryList.map(country => 
                                 <li className="flex font-thin items-center justify-between p-1 text-sm" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
@@ -429,19 +439,69 @@ const FormationInfoComponent = () => {
                         </ul>
                     </div>
 
-                    <p className="flex font-one font-medium items-center text-md">Business Name <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
-                    <ul className="bg-gray-100">
-                        {businessNameList && businessNameList.map(businessName => 
-                            <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessName}> {businessName} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
-                        )}
-                    </ul>
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Business Name(s) <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {businessNameList && businessNameList.map(businessName => 
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessName}> {businessName} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            )}
+                        </ul>
+                    </div>
 
-                    <p className="flex font-one font-medium items-center text-md">Business Function <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
-                    <ul className="bg-gray-100">
-                        {businessFunctionList && businessFunctionList.map(businessFunction => 
-                            <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessFunction}> {businessFunction} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
-                        )}
-                    </ul>
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Business Function(s) <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {businessFunctionList && businessFunctionList.map(businessFunction => 
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessFunction}> {businessFunction} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            )}
+                        </ul>
+                    </div>
+
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Business Address(es) <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {businessAddressList && businessAddressList.map(businessAddress => 
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessAddress}> {businessAddress} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            )}
+                        </ul>
+                    </div>
+
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Share Capital <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {shareCapitalList && shareCapitalList.map(shareCapital => 
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={shareCapital}> {shareCapital} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            )}
+                        </ul>
+                    </div>
+
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Shareholder(s) <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {shareholderList && shareholderList.map(shareholder => 
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={shareholder}> {shareholder} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            )}
+                        </ul>
+                    </div>
+
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Director(s) <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {directorList && directorList.map(director => 
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={director}> {director} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            )}
+                        </ul>
+                    </div>
+
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Beneficial Owner(s) <span className="font-thin text-sm">&nbsp;(User submitted data)</span></p>
+                        <ul className="bg-gray-100">
+                            {beneficialOwnerList && beneficialOwnerList.map(neneficialOwner => 
+                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={neneficialOwner}> {neneficialOwner} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            )}
+                        </ul>
+                    </div>
+                    
                 </div>
 
             </div>
