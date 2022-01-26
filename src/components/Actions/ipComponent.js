@@ -53,14 +53,15 @@ const IpInfoComponent = () => {
     }
 
     const handleRepresentativeInfo = () => {
-        if (formik.values.representativeFullname && formik.values.representativeEmail && formik.values.representativePhoneNo) {
-            let representativeDetails = {
-                "representativeFullname": formik.values.representativeFullname,
-                "representativeEmail": formik.values.representativeEmail,
-                "representativePhoneNo": formik.values.representativePhoneNo
-            }
-            setRepresentativeInfoList([...representativeInfoList, representativeDetails])
+        let representativeDetails = {
+            "representativeFullname": formik.values.representativeFullname,
+            "representativeEmail": formik.values.representativeEmail,
+            "representativePhoneNo": formik.values.representativePhoneNo
         }
+        console.log(representativeDetails);
+        // if (!representativeInfoList.includes(representativeDetails)) {
+        //     setRepresentativeInfoList([...representativeInfoList, representativeDetails])
+        // }
     }
 
     const handleAddressInfo = () => {
@@ -69,9 +70,8 @@ const IpInfoComponent = () => {
         }
     }
 
-    const handleDeleteCountry = () => {
-
-    }
+    const handleDeleteCountry = () => {}
+    const handleDeleteItem = () => {}
 
     const handleReviewFormation = () => {
         let reviewBox = {
@@ -139,7 +139,7 @@ const IpInfoComponent = () => {
                                 id="ipDescription"
                                 name="ipDescription"
                                 onBlur={formik.handleBlur}
-                                onChange={formik.values.handleChange}
+                                onChange={formik.handleChange}
                                 placeholder="IP Description"
                                 type="text"
                                 value={formik.values.ipDescription}
@@ -283,6 +283,18 @@ const IpInfoComponent = () => {
                         </ul> : null}
                     </div>
 
+                    <div className="mb-5">
+                        <p className="flex font-one font-medium items-center text-md">Share Capital</p>
+                        {ipDescriptionList.length > 0 ?
+                        <div className="bg-blue-50 p-4 rounded-md">
+                            {ipDescriptionList && ipDescriptionList.map(ipDetail => 
+                            <ul className="border-b border-gray-200 mb-2" key={ipDetail.ipDescription}>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {ipDetail.ipDescription} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {ipDetail.ipType}</li>
+                            </ul>
+                            )}
+                        </div> : null}
+                    </div>
                     
                 </div>
 
