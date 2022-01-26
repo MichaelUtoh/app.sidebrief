@@ -123,6 +123,7 @@ const FormationInfoComponent = () => {
             beneficialOwnerEmail: "",
             beneficialOwnerPhoneNo: "",
         },
+
         validationSchema: Yup.object({
             country: Yup.string().max(150, "Maximum of 150 characters allowed").required("Required"),
             businessName: Yup.string().max(150, "Max of 150 characters allowed").required("Required"),
@@ -130,13 +131,13 @@ const FormationInfoComponent = () => {
             businessAddress: Yup.string().required("Required"),
             shareCapitalAmount: Yup.string().required("Required"),
             shareCapitalType: Yup.string().required("Required"),
-            shareholderFullname: Yup.string().required("Required"),
-            shareholderEmail: Yup.string().required("Required"),
-            shareholderPhoneNo: Yup.string().required("Required"),
-            shareholderSharePercentage: Yup.string().required("Required"),
+            shareholderFullname: Yup.string().min(5, "minimum of 5 characters required").required("Required"),
+            shareholderEmail: Yup.string().email("Invalid email address").required("Required"),
+            shareholderPhoneNo: Yup.string().min(5, "minimum of 5 characters required").required("Required"),
+            shareholderSharePercentage: Yup.number().required("Required"),
             shareholderShareCapitalType: Yup.string().required("Required"),
             directorFullname: Yup.string().required("Required"),
-            directorEmail: Yup.string().required("Required"),
+            directorEmail: Yup.string().email("Invalid email address").required("Required"),
             directorPhoneNo: Yup.string().required("Required"),
             beneficialOwnerFullname: Yup.string().required("Required"),
             beneficialOwnerEmail: Yup.string().required("Required"),
@@ -432,74 +433,88 @@ const FormationInfoComponent = () => {
                 <div className="abstract-sidebar flex flex-col grow h-[500px] justify-start ml-2 p-2 px-4 shadow-lg w-5/12 overflow-y-scroll">
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Country(ies)</p>
-                        <ul className="bg-gray-100">
+                        <ul className="bg-gray-100 p-4">
                             {countryList && countryList.map(country => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]" key={country}> {country} <span onClick={() => handleDeleteCountry()}><BiTrash /></span></li>
                             )}
                         </ul>
                     </div>
 
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Business Name(s)</p>
-                        <ul className="bg-gray-100">
+                        <ul className="bg-gray-100 p-4">
                             {businessNameList && businessNameList.map(businessName => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessName}> {businessName} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]" key={businessName}> {businessName} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
                             )}
                         </ul>
                     </div>
 
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Business Function(s)</p>
-                        <ul className="bg-gray-100">
+                        <ul className="bg-gray-100 p-4">
                             {businessFunctionList && businessFunctionList.map(businessFunction => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessFunction}> {businessFunction} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]" key={businessFunction}> {businessFunction} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
                             )}
                         </ul>
                     </div>
 
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Business Address(es)</p>
-                        <ul className="bg-gray-100">
+                        <ul className="bg-gray-100 p-4">
                             {businessAddressList && businessAddressList.map(businessAddress => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={businessAddress}> {businessAddress} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]" key={businessAddress}> {businessAddress} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
                             )}
                         </ul>
                     </div>
 
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Share Capital</p>
-                        <ul className="bg-gray-100">
+                        <ul className="bg-gray-100 p-4">
                             {shareCapitalList && shareCapitalList.map(shareCapital => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={shareCapital}> {shareCapital} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]" key={shareCapital}> {shareCapital} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
                             )}
                         </ul>
                     </div>
 
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Shareholder(s)</p>
-                        <ul className="bg-gray-100">
+                        <div className="bg-gray-100 p-4">
                             {shareholderList && shareholderList.map(shareholder => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={shareholder}> {shareholder} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            <ul className="border-b border-gray-200 mb-2" key={shareholder.shareholderPhoneNo}>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {shareholder.shareholderFullname} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {shareholder.shareholderEmail}</li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {shareholder.shareholderPhoneNo}</li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {shareholder.shareholderSharePercentage}</li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {shareholder.shareholderShareCapitalType}</li>
+                            </ul>
                             )}
-                        </ul>
+                        </div>
                     </div>
 
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Director(s)</p>
-                        <ul className="bg-gray-100">
+                        <div className="bg-gray-100 p-4">
                             {directorList && directorList.map(director => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={director}> {director} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                            <ul className="border-b border-gray-200 mb-2" key={director.directorEmail}>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {director.directorFullname} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {director.directorEmail}</li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {director.directorPhoneNo}</li>
+                            </ul>
                             )}
-                        </ul>
+                        </div>
                     </div>
 
                     <div className="mb-5">
                         <p className="flex font-one font-medium items-center text-md">Beneficial Owner(s)</p>
-                        <ul className="bg-gray-100">
-                            {beneficialOwnerList && beneficialOwnerList.map(neneficialOwner => 
-                                <li className="flex font-thin items-center justify-between p-1 text-sm" key={neneficialOwner}> {neneficialOwner} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                        <div className="bg-gray-100 p-4">
+                            {beneficialOwnerList && beneficialOwnerList.map(beneficialOwner => 
+                            <ul className="border-b border-gray-200 mb-2" key={beneficialOwner.beneficialOwnerEmail}>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {beneficialOwner.beneficialOwnerFullname} <span onClick={() => handleDeleteItem()}><BiTrash /></span></li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {beneficialOwner.beneficialOwnerEmail}</li>
+                                <li className="flex font-thin items-center justify-between p-1 text-[.8rem]"> {beneficialOwner.beneficialOwnerPhoneNo}</li>
+                            </ul>
                             )}
-                        </ul>
+                        </div>
                     </div>
                     
                 </div>
