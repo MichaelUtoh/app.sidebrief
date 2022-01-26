@@ -6,9 +6,7 @@ import countryData from '../../assets/countries.json'
 
 const IpInfoComponent = () => {
 
-    const [country, setCountry] = useState("Nigeria")
-    const [countryList, setCountryList] = useState(new Set())
-
+    const [countryList, setCountryList] = useState([])
     const [ipDescription, setIpDescription] = useState("")
     const [ipType, setIpType] = useState("")
     const [ipDescriptionList, setIpDescriptionList] = useState([])
@@ -29,46 +27,45 @@ const IpInfoComponent = () => {
 
 
     const handleCountryData = (e) => {
-        countryList.add(country)
-        // console.log(countryList);
+        if (formik.values.country.length > 0 && !countryList.includes(formik.values.country)) {
+            setCountryList([...countryList, formik.values.country])
+        }
     }
 
     const handleIpInfo = () => {
         let ipInfo = {
-            "ipDescription": ipDescription,
-            "ipType": ipType
+            "ipDescription": formik.values.ipDescription,
+            "ipType": formik.values.ipType
         }
-        ipDescriptionList.push(ipInfo)
-        // console.log(ipDescriptionList);
+        setIpDescriptionList([...ipDescriptionList, ipInfo])
     }
 
     const handleIpUseInfo = () => {
-        if (ipUse.length > 2) {
-            ipUseList.push(ipUse)
+        if (formik.values.ipUse.length > 0 && !ipUseList.includes(formik.values.ipUse)) {
+            setIpUseList([...ipUseList, formik.values.ipUse])
         }
-        // console.log(ipUseList);
     }
 
     const handleIpOwnerInfo = () => {
-        if (ipOwner.length > 2) {
-            ipOwnerList.push(ipOwner)
+        if (formik.values.ipOwner.length > 0 && !ipOwnerList.includes(formik.values.ipOwner)) {
+            setIpOwnerList([...ipOwnerList, formik.values.ipOwner])
         }
-        // console.log(ipOwnerList);
     }
 
     const handleRepresentativeInfo = () => {
-        let representativeDetails = {
-            "representativeFullname": representativeFullname,
-            "representativeEmail": representativeEmail,
-            "representativePhoneNo": representativePhoneNo
+        if (formik.values.representativeFullname && formik.values.representativeEmail && formik.values.representativePhoneNo) {
+            let representativeDetails = {
+                "representativeFullname": formik.values.representativeFullname,
+                "representativeEmail": formik.values.representativeEmail,
+                "representativePhoneNo": formik.values.representativePhoneNo
+            }
+            setRepresentativeInfoList([...representativeInfoList, representativeDetails])
         }
-        representativeInfoList.push(representativeDetails)
-        // console.log(representativeInfoList);
     }
 
     const handleAddressInfo = () => {
-        if (address.length > 2) {
-            addressInfoList.push(address);
+        if (formik.values.address.length > 0 && !addressInfoList.includes(formik.values.address)) {
+            setAddressInfoList([...addressInfoList, formik.values.address])
         }
     }
 
