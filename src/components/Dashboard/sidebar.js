@@ -47,7 +47,7 @@ const SidebarComponent = () => {
                             "cursor-pointer flex font-two items-center justify-start link-animate rounded-r-sm mr-2 mb-2 p-2 pl-4"}
                     >
                         <BiUser className="text-[#5a5a5a]" fontSize={18} />
-                        <li className="ml-2 link-display text-[#5a5a5a]">My Company</li>
+                        <li className="ml-2 link-display text-[#5a5a5a]">Profile</li>
                     </div>
                 </Link>
 
