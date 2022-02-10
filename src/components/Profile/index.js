@@ -9,11 +9,13 @@ const ProfileComponent = () => {
     const [showRegistrations, setShowRegistrations] = useState(false)
 
     const handleContactInfo = () => {
-
+        setShowContactInfo(true)
+        setShowRegistrations(false)
     }
 
     const handleRegistrations = () => {
-
+        setShowContactInfo(false)
+        setShowRegistrations(true)
     }
 
   return (
@@ -21,7 +23,7 @@ const ProfileComponent = () => {
         <div className="flex flex-col min-h-screen py-14 lg:px-6">
 
             {/* Profile Details */}
-            <div className="border-b border-b-gray-200 flex items-center p-2 w-full">
+            <div className="border-b border-b-gray-50 flex items-center p-2 w-full">
                 <div className="border border-gray-50 flex h-60 items-center justify-center w-3/12">
                     <FaUser color="#f3f3f3" size={150} />
                     <img src="" />
@@ -54,12 +56,24 @@ const ProfileComponent = () => {
 
                 <div className="w-9/12">
                     <section className="border-b border-gray-200 flex">
-                        <p className="cursor-pointer flex font-bold hover:bg-cyan-100 hover:text-cyan-900 items-center p-2 px-4 text-gray-500" onClick={() => {handleContactInfo()}}>
+                        <p
+                            className={showContactInfo ? 
+                                "cursor-pointer flex font-bold bg-cyan-100 text-cyan-900 items-center p-2 px-4" :
+                                "cursor-pointer flex font-bold hover:text-cyan-900 items-center p-2 px-4 text-gray-400"
+                            }
+                            onClick={() => {handleContactInfo()}}
+                        >
                             <FaUser className="m-1 " />
                             <span className="m-1">About</span>
                         </p>
 
-                        <p className="cursor-pointer flex font-bold hover:bg-cyan-100 hover:text-cyan-900 items-center p-2 px-4 text-gray-500" onClick={() => {handleRegistrations()}}>
+                        <p
+                            className={showRegistrations ? 
+                                "cursor-pointer flex font-bold bg-cyan-100 text-cyan-900 items-center p-2 px-4" :
+                                "cursor-pointer flex font-bold hover:text-cyan-900 items-center p-2 px-4 text-gray-400"
+                            }
+                            onClick={() => {handleRegistrations()}}
+                        >
                             <FaRegistered className="m-1"/> 
                             <span className="m-1">My Company</span>
                         </p>
