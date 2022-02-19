@@ -5,28 +5,28 @@ import { FaRegistered } from 'react-icons/fa'
 
 const ProfileComponent = () => {
 
-    const [showContactInfo, setShowContactInfo] = useState(true)
-    const [showRegistrations, setShowRegistrations] = useState(false)
+    const [showProfileInfo, setShowProfileInfo] = useState(true)
+    const [showCompanyInfo, setShowCompanyInfo] = useState(false)
 
-    const handleContactInfo = () => {
-        setShowContactInfo(true)
-        setShowRegistrations(false)
+    const handleProfileInfo = () => {
+        setShowProfileInfo(true)
+        setShowCompanyInfo(false)
     }
 
-    const handleRegistrations = () => {
-        setShowContactInfo(false)
-        setShowRegistrations(true)
+    const handleCompanyInfo = () => {
+        setShowProfileInfo(false)
+        setShowCompanyInfo(true)
     }
 
   return (
     <>
-        <div className="flex flex-col min-h-screen py-14 lg:px-6">
+        <div className="flex flex-col min-h-screen pb-16 lg:px-6">
 
             {/* Profile Details */}
             <div className="border-b border-b-gray-50 flex items-center p-2 w-full">
                 <div className="border border-gray-50 flex h-60 items-center justify-center w-3/12">
                     <FaUser color="#f3f3f3" size={150} />
-                    <img src="" />
+                    {/* <img src="" alt="" /> */}
                 </div>
 
                 <div className="flex flex-col justify-center p-4 w-9/12">
@@ -37,12 +37,12 @@ const ProfileComponent = () => {
                     
                     <div className="flex items-baseline p-2 pt-4">
                     <p className="font-thin text-xs text-gray-900">Full Name: &nbsp;</p>
-                        <p className="font-bold text-md text-[#5a5a5a]">John S. Doe</p>
+                        <p className="font-bold text-md text-gray-700">John S. Doe</p>
                     </div>
                     
                     <div className="flex items-baseline p-2">
                         <p className="font-thin text-xs text-gray-900">Email: &nbsp;</p>
-                        <p className="font-bold text-md text-[#5a5a5a]">johndoe21@gmail.com</p>
+                        <p className="font-bold text-md text-gray-700">johndoe21@gmail.com</p>
                     </div>
                 </div>
             </div>
@@ -55,31 +55,32 @@ const ProfileComponent = () => {
                 </div>
 
                 <div className="w-9/12">
-                    <section className="border-b border-gray-200 flex">
+                    <section className="border-b border-gray-100 flex px-6">
                         <p
-                            className={showContactInfo ? 
-                                "cursor-pointer flex font-bold bg-cyan-100 text-cyan-900 items-center p-2 px-4" :
-                                "cursor-pointer flex font-bold hover:text-cyan-900 items-center p-2 px-4 text-gray-400"
+                            className={showProfileInfo ? 
+                                "cursor-pointer flex font-bold bg-cyan-900 text-white items-center p-2 px-4" :
+                                "cursor-pointer flex font-bold hover:text-cyan-900 items-center p-2 px-4 text-cyan-900"
                             }
-                            onClick={() => {handleContactInfo()}}
+                            onClick={() => {handleProfileInfo()}}
                         >
                             <FaUser className="m-1 " />
                             <span className="m-1">About</span>
                         </p>
 
                         <p
-                            className={showRegistrations ? 
-                                "cursor-pointer flex font-bold bg-cyan-100 text-cyan-900 items-center p-2 px-4" :
-                                "cursor-pointer flex font-bold hover:text-cyan-900 items-center p-2 px-4 text-gray-400"
+                            className={showCompanyInfo ? 
+                                "cursor-pointer flex font-bold bg-cyan-900 text-white items-center p-2 px-4" :
+                                "cursor-pointer flex font-bold hover:text-cyan-900 items-center p-2 px-4 text-cyan-900"
                             }
-                            onClick={() => {handleRegistrations()}}
+                            onClick={() => {handleCompanyInfo()}}
                         >
                             <FaRegistered className="m-1"/> 
                             <span className="m-1">My Company</span>
                         </p>
                     </section>
 
-                    { showContactInfo ? <ContactInfo /> : null }
+                    { showProfileInfo ? <ProfileInfo /> : null }
+                    { showCompanyInfo ? <CompanyInfo /> : null }
                 </div>
 
             </div>
@@ -89,10 +90,10 @@ const ProfileComponent = () => {
 }
 
 
-const ContactInfo = () => {
+const ProfileInfo = () => {
   return (
     <>
-        <div className="border-b border-gray-300 p-4">
+        <div className="border-b border-gray-100 p-4">
             {/* Contact Information */}
             <section className="mb-6">
                 <div className="flex items-center justify-start p-2 pt-4">
@@ -102,22 +103,22 @@ const ContactInfo = () => {
 
                 <div className="flex items-baseline p-2">
                     <p className="font-thin text-xs text-gray-900">Address Line 1: &nbsp;</p>
-                    <p className="font-bold text-md text-[#5a5a5a]">21, Admiralty way, Lekki, Lagos.</p>
+                    <p className="font-bold text-md text-gray-700">21, Admiralty way, Lekki, Lagos.</p>
                 </div>
 
                 <div className="flex items-baseline p-2">
                     <p className="font-thin text-xs text-gray-900">Address Line 2: &nbsp;</p>
-                    <p className="font-bold text-md text-[#5a5a5a]">15A, Mosafejo Street, Lekki, Lagos.</p>
+                    <p className="font-bold text-md text-gray-700">15A, Mosafejo Street, Lekki, Lagos.</p>
                 </div>
 
                 <div className="flex items-baseline p-2">
                     <p className="font-thin text-xs text-gray-900">Occupation: &nbsp;</p>
-                    <p className="font-bold text-md text-[#5a5a5a]">Hedge Funds Manager</p>
+                    <p className="font-bold text-md text-gray-700">Hedge Funds Manager</p>
                 </div>
 
                 <div className="flex items-baseline p-2">
                     <p className="font-thin text-xs text-gray-900">Phone: &nbsp;</p>
-                    <p className="font-bold text-md text-[#5a5a5a]">+234 800 451 0000</p>
+                    <p className="font-bold text-md text-gray-700">+234 800 451 0000</p>
                 </div>
             </section>
 
@@ -130,12 +131,12 @@ const ContactInfo = () => {
 
                 <div className="flex items-baseline p-2">
                     <p className="font-thin text-xs text-gray-900">Birthday: &nbsp;</p>
-                    <p className="font-bold text-md text-[#5a5a5a]">October 1, 1969</p>
+                    <p className="font-bold text-md text-gray-700">October 1, 1969</p>
                 </div>
 
                 <div className="flex items-baseline p-2">
                     <p className="font-thin text-xs text-gray-900">Gender: &nbsp;</p>
-                    <p className="font-bold text-md text-[#5a5a5a]">Male</p>
+                    <p className="font-bold text-md text-gray-700">Male</p>
                 </div>
             </section>
 
@@ -143,5 +144,67 @@ const ContactInfo = () => {
     </>
   )
 }
+
+
+const CompanyInfo = () => {
+    return (
+      <>
+          <div className="border-b border-gray-100 p-4">
+              {/* Contact Information */}
+              <section className="mb-6">
+                  <div className="flex items-center justify-start p-2 pt-4">
+                      <p className="font-medium mr-4 text-[.7rem] text-cyan-700 uppercase">Registered Company Information</p>
+                      <hr className="border-b border-b-gray-200 border-t-white w-48 h-1" />
+                  </div>
+
+                  <div className="flex items-baseline p-2">
+                      <p className="font-thin text-xs text-gray-900">Company Name: &nbsp;</p>
+                      <p className="font-bold text-md text-gray-700">AutoLand Group Co.</p>
+                  </div>
+  
+                  <div className="flex items-baseline p-2">
+                      <p className="font-thin text-xs text-gray-900">Address Line 1: &nbsp;</p>
+                      <p className="font-bold text-md text-gray-700">21, Admiralty way, Lekki, Lagos.</p>
+                  </div>
+  
+                  <div className="flex items-baseline p-2">
+                      <p className="font-thin text-xs text-gray-900">Address Line 2: &nbsp;</p>
+                      <p className="font-bold text-md text-gray-700">15A, Mosafejo Street, Lekki, Lagos.</p>
+                  </div>
+  
+                  <div className="flex items-baseline p-2">
+                      <p className="font-thin text-xs text-gray-900">Share Capital: &nbsp;</p>
+                      <p className="font-bold text-md text-gray-700">2,000,000 Preference Shares</p>
+                  </div>
+  
+                  <div className="flex items-baseline p-2">
+                      <p className="font-thin text-xs text-gray-900">Phone: &nbsp;</p>
+                      <p className="font-bold text-md text-gray-700">+234 800 451 0000</p>
+                  </div>
+              </section>
+  
+              {/* Basic Information */}
+              <section className="mb-6">
+                  <div className="flex items-center justify-start p-2 pt-4">
+                      <p className="font-medium mr-4 text-[.7rem] text-cyan-700 uppercase">Basic Information</p>
+                      <hr className="border-b border-b-gray-200 border-t-white w-48 h-1" />
+                  </div>
+  
+                  <div className="flex items-baseline p-2">
+                      <p className="font-thin text-xs text-gray-900">Birthday: &nbsp;</p>
+                      <p className="font-bold text-md text-gray-700">October 1, 1969</p>
+                  </div>
+  
+                  <div className="flex items-baseline p-2">
+                      <p className="font-thin text-xs text-gray-900">Gender: &nbsp;</p>
+                      <p className="font-bold text-md text-gray-700">Male</p>
+                  </div>
+              </section>
+  
+          </div>
+      </>
+    )
+  }
+  
 
 export default ProfileComponent
